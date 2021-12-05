@@ -51,7 +51,7 @@
 
 
 
-###### Objetivos da Aula:
+###### Objetivos do Projeto:
 
 * Alcançar um domínio maior da orientação a objetos e da tecnologia Java;
 
