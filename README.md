@@ -38,7 +38,7 @@
 
   5. **Moradores**
      * Usuários
-     * Hierarquia - calouro e veterano (opcional)
+     * Hierarquia - calouro e veterano (opcional) 
 
   
 
