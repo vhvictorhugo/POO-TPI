@@ -38,6 +38,7 @@ public class Morador {
     
     public Morador(String nome, String apelido, String curso, LocalDate dataNascimento){
         LocalDate dataAtual;
+        
         this.setNome(nome);
         this.setApelido(apelido);
         this.setCurso(curso);
