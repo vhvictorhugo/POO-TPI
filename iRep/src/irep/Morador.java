@@ -18,7 +18,7 @@ public class Morador {
     private int idade;
     //private Tarefa tarefaAtribuida;
     
-    // Getters
+    // Getters 
     public String getNome(){ return this.nome; }
     public String getApelido(){ return this.apelido; }
     public String getCurso(){ return this.curso; }
