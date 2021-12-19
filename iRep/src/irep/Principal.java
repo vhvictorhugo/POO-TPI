@@ -20,12 +20,13 @@ public class Principal {
         Principal principal = new Principal();
         List<Morador> moradores = new LinkedList<Morador>();
         List<Conta> contas = new LinkedList<Conta>();
+        List<Tarefa> tarefas = new LinkedList<Tarefa>();
 
-        principal.cadastraConta(contas);
-        System.out.println(contas.get(0).getNome());
-        System.out.println(contas.get(0).getValorConta());
-        System.out.println(contas.get(0).getValorEmAberto());
-        System.out.println(contas.get(0).getVencimento());
+//        principal.cadastraConta(contas);
+//        System.out.println(contas.get(0).getNome());
+//        System.out.println(contas.get(0).getValorConta());
+//        System.out.println(contas.get(0).getValorEmAberto());
+//        System.out.println(contas.get(0).getVencimento());
         /*principal.cadastraMorador(moradores);
         System.out.println(moradores.get(0).getNome());
         System.out.println(moradores.get(0).getApelido());
@@ -33,6 +34,8 @@ public class Principal {
         System.out.println(moradores.get(0).getDataEntrada());
         System.out.println(moradores.get(0).getDataNascimento());
         System.out.println(moradores.get(0).getCurso());*/
+        principal.cadastraMorador(tarefas);
+        System.out.println(tarefas.get(0).getNomeTarefa());
     }
     
     public void cadastraMorador(List moradores)throws Exception {
