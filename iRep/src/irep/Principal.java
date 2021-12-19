@@ -34,8 +34,10 @@ public class Principal {
         System.out.println(moradores.get(0).getDataEntrada());
         System.out.println(moradores.get(0).getDataNascimento());
         System.out.println(moradores.get(0).getCurso());*/
-        principal.cadastraMorador(tarefas);
+        principal.cadastraTarefa(tarefas);
         System.out.println(tarefas.get(0).getNomeTarefa());
+        System.out.println(tarefas.get(0).getIdSemana());
+        System.out.println(tarefas.get(0).getIsFeito());
     }
     
     public void cadastraMorador(List moradores)throws Exception {
@@ -103,6 +105,31 @@ public class Principal {
             
             Conta conta = new Conta(nome, valorConta, dataVencimento);            
             contas.add(conta);
+        }
+    }
+        public void cadastraTarefa(List tarefas){
+        System.out.println("---------- CADASTRO DE CONTAS ----------");
+        
+        int qntTarefas;
+        String nome;
+        long idTarefa;
+        
+        Scanner scan = new Scanner(System.in); 
+        
+        System.out.print("\nEntre com a quantidade de contas a cadastrar: ");        
+        
+        qntTarefas = scan.nextInt();
+        
+        for (int i = 0; i < qntTarefas; i++) {
+            
+            System.out.println("---------- CONTA "+(i+1)+" ----------");
+            System.out.print("Entre com o nome da Tarefa: ");
+            if(i == 0) scan.nextLine();    // conserta bug scan
+            nome = scan.nextLine();
+            System.out.print("Entre com o id: ");
+            idTarefa = scan.nextLong();
+            Tarefa tarefa = new Tarefa(nome, idTarefa);            
+            tarefas.add(tarefa);
         }
     }
 }

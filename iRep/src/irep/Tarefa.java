@@ -8,24 +8,25 @@ package irep;
 
 public class Tarefa {
     private String Tarefa;
-    private Long idSemana;
+    private Long idTarefa;
     private Morador nome;
     private boolean  isFeito;
-    
+
     // Getters
     public String getNomeTarefa(){ return this.Tarefa; }
-
+    public Long getIdSemana(){ return  this.idTarefa;}
+    public boolean getIsFeito(){ return this.isFeito; }
     // Setters
     public void setNomeTarefa(String nome){ this.Tarefa = nome; }
-    public void setIdSemana( Long id){  this.idSemana = id; }
+    public void setidTarefa( Long id){  this.idTarefa = id; }
     public void setMoradores(Morador nome){ this.nome = nome; }
     public void setIsFeito(boolean isFeito){ this.isFeito = isFeito; }
     
-    public Tarefa(String tarefa , Long idSemana,Morador nome, boolean status){
+    public Tarefa(String tarefa , Long idTarefas){
         this.setNomeTarefa(tarefa);
-        this.setIdSemana(idSemana);
+        this.setidTarefa(idTarefas);
         this.setMoradores(nome);
-        this.setIsFeito(status);
+        this.setIsFeito(false);
     }
 }
 
