@@ -54,10 +54,13 @@
 ###### Objetivos do Projeto:
 
 * Alcançar um domínio maior da orientação a objetos e da tecnologia Java;
-
 * Organizar um sistema em módulos bem definidos, reduzindo o acoplamento e
   aumentando a coesão;
-
 * Amadurecer a experiência de se trabalhar em equipe;
-
 * Aprender a usar de forma apropriada uma ferramenta de controle de versão.
+
+
+
+###### Detalhes sobre ENTREGA 2:
+
+O repositório conta com 2 branches (main e dev), favor verificar os commits de ambas. Sempre que possível a dupla fará o merge entre elas. Vale lembrar que a branch 'main' contém a versão mais estável do código.

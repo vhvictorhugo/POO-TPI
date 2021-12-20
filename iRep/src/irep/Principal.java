@@ -13,31 +13,28 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class Principal {
     public static void main(String[] args) throws Exception{
         
         Principal principal = new Principal();
         List<Morador> moradores = new LinkedList<Morador>();
         List<Conta> contas = new LinkedList<Conta>();
-        List<Tarefa> tarefas = new LinkedList<Tarefa>();
+        List<Tarefa> tarefas = new LinkedList<Tarefa>();        
 
-//        principal.cadastraConta(contas);
-//        System.out.println(contas.get(0).getNome());
-//        System.out.println(contas.get(0).getValorConta());
-//        System.out.println(contas.get(0).getValorEmAberto());
-//        System.out.println(contas.get(0).getVencimento());
-        /*principal.cadastraMorador(moradores);
-        System.out.println(moradores.get(0).getNome());
-        System.out.println(moradores.get(0).getApelido());
-        System.out.println(moradores.get(0).getIdade());
-        System.out.println(moradores.get(0).getDataEntrada());
-        System.out.println(moradores.get(0).getDataNascimento());
-        System.out.println(moradores.get(0).getCurso());*/
+        principal.cadastraMorador(moradores);
+        for (int i = 0; i < moradores.size(); i++) {
+            moradores.get(i).getMorador();
+        }
+
+        principal.cadastraConta(contas);
+        for (int i = 0; i < contas.size(); i++) {
+            contas.get(i).getConta();
+        }
+        
         principal.cadastraTarefa(tarefas);
-        System.out.println(tarefas.get(0).getNomeTarefa());
-        System.out.println(tarefas.get(0).getIdSemana());
-        System.out.println(tarefas.get(0).getIsFeito());
+        for (int i = 0; i < tarefas.size(); i++) {
+            tarefas.get(i).getTarefa();            
+        }
     }
     
     public void cadastraMorador(List moradores)throws Exception {
@@ -72,8 +69,7 @@ public class Principal {
             Morador morador = new Morador(nome, apelido, curso, dataNascimento);            
             moradores.add(morador);
         }
-    }
-    
+    }    
     public void cadastraConta(List contas){
         System.out.println("---------- CADASTRO DE CONTAS ----------");
         
@@ -107,22 +103,22 @@ public class Principal {
             contas.add(conta);
         }
     }
-        public void cadastraTarefa(List tarefas){
-        System.out.println("---------- CADASTRO DE CONTAS ----------");
+    public void cadastraTarefa(List tarefas){
+        System.out.println("---------- CADASTRO DE TAREFAS ----------");
         
-        int qntTarefas;
+        int qtTarefas;
         String nome;
         long idTarefa;
         
         Scanner scan = new Scanner(System.in); 
         
-        System.out.print("\nEntre com a quantidade de contas a cadastrar: ");        
+        System.out.print("\nEntre com a quantidade de tarefas a cadastrar: ");        
         
-        qntTarefas = scan.nextInt();
+        qtTarefas = scan.nextInt();
         
-        for (int i = 0; i < qntTarefas; i++) {
+        for (int i = 0; i < qtTarefas; i++) {
             
-            System.out.println("---------- CONTA "+(i+1)+" ----------");
+            System.out.println("---------- TAREFA "+(i+1)+" ----------");
             System.out.print("Entre com o nome da Tarefa: ");
             if(i == 0) scan.nextLine();    // conserta bug scan
             nome = scan.nextLine();
