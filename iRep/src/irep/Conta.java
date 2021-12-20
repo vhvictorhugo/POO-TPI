@@ -43,4 +43,19 @@ public class Conta {
         this.valorEmAberto = this.getValorConta();
         this.setVencimento(vencimento);
     }
+
+    public boolean isPaga(){
+        if(this.valorEmAberto == 0){
+            return true;
+        }else{
+            return false;
+        }        
+    }
+    
+    public void getConta(){
+        System.out.println("Nome: "+this.getNome());
+        System.out.println("Valor: "+this.getValorConta());
+        System.out.println("Valor em Aberto: "+this.getValorEmAberto());
+        System.out.println("Vencimento: "+getVencimento());
+    }
 }

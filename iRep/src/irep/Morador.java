@@ -7,9 +7,7 @@
 
 package irep;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Morador {
     
@@ -18,7 +16,7 @@ public class Morador {
     private int idade;
     //private Tarefa tarefaAtribuida;
     
-    // Getters
+    // Getters 
     public String getNome(){ return this.nome; }
     public String getApelido(){ return this.apelido; }
     public String getCurso(){ return this.curso; }
@@ -48,4 +46,12 @@ public class Morador {
         this.setDataEntrada(dataAtual); // dataAtual será considerada a data de entrada
         this.setIdade(dataNascimento, dataAtual);       
     }    
+    
+    public void getMorador(){
+        System.out.println("Nome: "+this.getNome());
+        System.out.println("Apelido: "+this.getApelido());
+        System.out.println("Curso: "+this.getCurso());
+        System.out.println("Idade: "+this.getIdade());
+        System.out.println("Data entrada: "+this.getDataEntrada());
+    }
 }
