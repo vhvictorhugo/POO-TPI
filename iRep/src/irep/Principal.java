@@ -23,17 +23,17 @@ public class Principal {
 
         principal.cadastraMorador(moradores);
         for (int i = 0; i < moradores.size(); i++) {
-            moradores.get(i).getMorador();
+            System.out.println(moradores.get(i));
         }
 
         principal.cadastraConta(contas);
         for (int i = 0; i < contas.size(); i++) {
-            contas.get(i).getConta();
+            System.out.println(contas.get(i));
         }
         
         principal.cadastraTarefa(tarefas);
         for (int i = 0; i < tarefas.size(); i++) {
-            tarefas.get(i).getTarefa();            
+            System.out.println(tarefas.get(i));           
         }
     }
     

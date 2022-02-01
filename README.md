@@ -64,3 +64,14 @@
 ###### Detalhes sobre ENTREGA 2:
 
 O repositório conta com 2 branches (main e dev), favor verificar os commits de ambas. Sempre que possível a dupla fará o merge entre elas. Vale lembrar que a branch 'main' contém a versão mais estável do código.
+
+
+
+###### Feedback ENTREGA 2:
+
+• Implementar alguns testes enquanto ainda está no começo, para não dificultar mais no final;
+
+• Deixando o curso como String, pode acontecer de diferentes cadastros ficarem com diferentes nomes. Sugiro utilizar um ENUM para o curso.
+
+• Sugestão: usar o nome "toString()" ao invés de "getConta()" que é mais comum e poderá ser usada diretamente em métodos para imprimir o objeto
+
