@@ -31,10 +31,11 @@ public class Tarefa {
         this.setIsFeito(false);
     }
     
-    public void getTarefa(){
-        System.out.println("Nome: "+this.getNome());
-        System.out.println("ID: "+this.getIdTarefa());
-        System.out.println("Tarefa está feita? "+getIsFeito());
+    @Override
+    public String toString(){
+        return ("Nome: " + this.getNome() + "\n" +
+                "ID: " + this.getIdTarefa() + "\n" +
+                "Tarefa está feita? " + this.getIsFeito() + "\n");
     }
 }
 

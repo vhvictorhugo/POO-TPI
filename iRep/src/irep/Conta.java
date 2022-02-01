@@ -52,10 +52,11 @@ public class Conta {
         }        
     }
     
-    public void getConta(){
-        System.out.println("Nome: "+this.getNome());
-        System.out.println("Valor: "+this.getValorConta());
-        System.out.println("Valor em Aberto: "+this.getValorEmAberto());
-        System.out.println("Vencimento: "+getVencimento());
+    @Override
+    public String toString(){
+        return ("Nome: " + this.getNome() + "\n" +
+                "Valor: " + this.getValorConta() + "\n" +
+                "Valor em Aberto: " + this.getValorEmAberto() + "\n" +
+                "Vencimento: " + this.getVencimento() + "\n");
     }
 }

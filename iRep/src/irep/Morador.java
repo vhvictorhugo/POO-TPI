@@ -47,11 +47,12 @@ public class Morador {
         this.setIdade(dataNascimento, dataAtual);       
     }    
     
-    public void getMorador(){
-        System.out.println("Nome: "+this.getNome());
-        System.out.println("Apelido: "+this.getApelido());
-        System.out.println("Curso: "+this.getCurso());
-        System.out.println("Idade: "+this.getIdade());
-        System.out.println("Data entrada: "+this.getDataEntrada());
+    @Override
+    public String toString(){
+        return ("Nome: " + this.getNome() + "\n" +
+                "Apelido: " + this.getApelido() + "\n" +
+                "Curso: " + this.getCurso() + "\n" +
+                "Idade: " + this.getIdade() + "\n" +
+                "Data entrada: " + this.getDataEntrada() + "\n");
     }
 }
