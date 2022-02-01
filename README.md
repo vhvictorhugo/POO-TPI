@@ -12,7 +12,7 @@
 
 ###### Descrição:
 
-- O projeto **iRep** tem como principal **objetivo** construir do zero um sistema utilizando a linguagem de programação **Java** para **moradores de uma república** gerenciarem diversas situações cotidianas de uma república para facilitar a organização geral da casa, facilitando a boa convivência . 
+- O projeto **iRep** tem como principal **objetivo** construir do zero um sistema utilizando a linguagem de programação **Java** para **moradores de uma república** gerenciarem diversas situações cotidianas de uma república para facilitar a organização geral da casa, facilitando a boa convivência. 
 
   
 
@@ -67,11 +67,19 @@ O repositório conta com 2 branches (main e dev), favor verificar os commits de 
 
 
 
-###### Feedback ENTREGA 2:
+###### Feedback ENTREGA 2 (tarefas ainda em aberto):
 
 • Implementar alguns testes enquanto ainda está no começo, para não dificultar mais no final;
 
 • Deixando o curso como String, pode acontecer de diferentes cadastros ficarem com diferentes nomes. Sugiro utilizar um ENUM para o curso.
 
-• Sugestão: usar o nome "toString()" ao invés de "getConta()" que é mais comum e poderá ser usada diretamente em métodos para imprimir o objeto
+
+
+###### Próximos Passos:
+
+• Implementar Testes Unitários;
+
+• Converter projeto para o padrão MVC - aplicando corretamente conceitos vistos durante as aulas (modularidade, encapsulamento e herança);
+
+• Terminar de implementar funcionalidades listadas anteriormente.
 
