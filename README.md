@@ -21,25 +21,23 @@
   1. Gerenciamento de **Contas**
      * Cadastro de Contas (luz, água, internet, etc)
      * Notificação para lembrar das contas (próxima da data de vencimento)
-
+     * Efetua o pagamento da conta
+       * Efetua o pagamento (morador)
+       * Efetua o pagamento (conta)
+     
   2. Gerenciamento de **Tarefas da Casa**
      * Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
-     * Atribuição de Tarefas para os moradores - Horário das tarefas (tarefas semanais)
+     * Atribuição de Tarefas para os moradores - cada morador terá uma determinada tarefa em uma determinada semana
      * Notificação para lembrar das tarefas (próximo ao fim da semana) 
      * Checklist
   3. Gerenciamento de **Decisões**
      * Cadastro de Votações
      * Votação
      * As votações fazem parte das decisões que a casa toma (Ex: Comprar um Freezer - compra **para a casa** com alto custo, que necessita de aprovação de todos os moradores)
-  4. Gerenciamento de **Reuniões**
-     * Cadastro de Reuniões
-     * Notificação para lembrar das reuniões
-     * As reuniões são momentos que todos os integrantes se juntam para tomar **decisões importantes** para a casa
-
   5. **Moradores**
      * Usuários
      * Hierarquia - calouro e veterano (opcional) 
-
+  
   
 
 ###### Tecnologias Utilizadas:

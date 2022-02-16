@@ -1,0 +1,128 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 8e1e5ab..786aad8 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -12,7 +12,7 @@[m
+ [m
+ ###### Descrição:[m
+ [m
+[31m-- O projeto **iRep** tem como principal **objetivo** construir do zero um sistema utilizando a linguagem de programação **Java** para **moradores de uma república** gerenciarem diversas situações cotidianas de uma república para facilitar a organização geral da casa, facilitando a boa convivência. [m
+[32m+[m[32m- O projeto **iRep** tem como principal **objetivo** construir do zero um sistema utilizando a linguagem de programação **Java** para **moradores de uma república** gerenciarem diversas situações cotidianas de uma república para facilitar a organização geral da casa, facilitando a boa convivência .[m[41m [m
+ [m
+   [m
+ [m
+[36m@@ -63,23 +63,4 @@[m
+ [m
+ ###### Detalhes sobre ENTREGA 2:[m
+ [m
+[31m-O repositório conta com 2 branches (main e dev), favor verificar os commits de ambas. Sempre que possível a dupla fará o merge entre elas. Vale lembrar que a branch 'main' contém a versão mais estável do código.[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-###### Feedback ENTREGA 2 (tarefas ainda em aberto):[m
+[31m-[m
+[31m-• Implementar alguns testes enquanto ainda está no começo, para não dificultar mais no final;[m
+[31m-[m
+[31m-• Deixando o curso como String, pode acontecer de diferentes cadastros ficarem com diferentes nomes. Sugiro utilizar um ENUM para o curso.[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-###### Próximos Passos:[m
+[31m-[m
+[31m-• Implementar Testes Unitários;[m
+[31m-[m
+[31m-• Converter projeto para o padrão MVC - aplicando corretamente conceitos vistos durante as aulas (modularidade, encapsulamento e herança);[m
+[31m-[m
+[31m-• Terminar de implementar funcionalidades listadas anteriormente.[m
+[31m-[m
+[32m+[m[32mO repositório conta com 2 branches (main e dev), favor verificar os commits de ambas. Sempre que possível a dupla fará o merge entre elas. Vale lembrar que a branch 'main' contém a versão mais estável do código.[m
+\ No newline at end of file[m
+[1mdiff --git a/iRep/src/irep/Conta.java b/iRep/src/irep/Conta.java[m
+[1mindex f333d31..4f93e83 100644[m
+[1m--- a/iRep/src/irep/Conta.java[m
+[1m+++ b/iRep/src/irep/Conta.java[m
+[36m@@ -52,11 +52,10 @@[m [mpublic class Conta {[m
+         }        [m
+     }[m
+     [m
+[31m-    @Override[m
+[31m-    public String toString(){[m
+[31m-        return ("Nome: " + this.getNome() + "\n" +[m
+[31m-                "Valor: " + this.getValorConta() + "\n" +[m
+[31m-                "Valor em Aberto: " + this.getValorEmAberto() + "\n" +[m
+[31m-                "Vencimento: " + this.getVencimento() + "\n");[m
+[32m+[m[32m    public void getConta(){[m
+[32m+[m[32m        System.out.println("Nome: "+this.getNome());[m
+[32m+[m[32m        System.out.println("Valor: "+this.getValorConta());[m
+[32m+[m[32m        System.out.println("Valor em Aberto: "+this.getValorEmAberto());[m
+[32m+[m[32m        System.out.println("Vencimento: "+getVencimento());[m
+     }[m
+ }[m
+[1mdiff --git a/iRep/src/irep/Morador.java b/iRep/src/irep/Morador.java[m
+[1mindex 8a66db6..38544ce 100644[m
+[1m--- a/iRep/src/irep/Morador.java[m
+[1m+++ b/iRep/src/irep/Morador.java[m
+[36m@@ -47,12 +47,11 @@[m [mpublic class Morador {[m
+         this.setIdade(dataNascimento, dataAtual);       [m
+     }    [m
+     [m
+[31m-    @Override[m
+[31m-    public String toString(){[m
+[31m-        return ("Nome: " + this.getNome() + "\n" +[m
+[31m-                "Apelido: " + this.getApelido() + "\n" +[m
+[31m-                "Curso: " + this.getCurso() + "\n" +[m
+[31m-                "Idade: " + this.getIdade() + "\n" +[m
+[31m-                "Data entrada: " + this.getDataEntrada() + "\n");[m
+[32m+[m[32m    public void getMorador(){[m
+[32m+[m[32m        System.out.println("Nome: "+this.getNome());[m
+[32m+[m[32m        System.out.println("Apelido: "+this.getApelido());[m
+[32m+[m[32m        System.out.println("Curso: "+this.getCurso());[m
+[32m+[m[32m        System.out.println("Idade: "+this.getIdade());[m
+[32m+[m[32m        System.out.println("Data entrada: "+this.getDataEntrada());[m
+     }[m
+ }[m
+[1mdiff --git a/iRep/src/irep/Principal.java b/iRep/src/irep/Principal.java[m
+[1mindex af3cf5e..130252c 100644[m
+[1m--- a/iRep/src/irep/Principal.java[m
+[1m+++ b/iRep/src/irep/Principal.java[m
+[36m@@ -23,17 +23,17 @@[m [mpublic class Principal {[m
+ [m
+         principal.cadastraMorador(moradores);[m
+         for (int i = 0; i < moradores.size(); i++) {[m
+[31m-            System.out.println(moradores.get(i));[m
+[32m+[m[32m            moradores.get(i).getMorador();[m
+         }[m
+ [m
+         principal.cadastraConta(contas);[m
+         for (int i = 0; i < contas.size(); i++) {[m
+[31m-            System.out.println(contas.get(i));[m
+[32m+[m[32m            contas.get(i).getConta();[m
+         }[m
+         [m
+         principal.cadastraTarefa(tarefas);[m
+         for (int i = 0; i < tarefas.size(); i++) {[m
+[31m-            System.out.println(tarefas.get(i));           [m
+[32m+[m[32m            tarefas.get(i).getTarefa();[m[41m            [m
+         }[m
+     }[m
+     [m
+[1mdiff --git a/iRep/src/irep/Tarefa.java b/iRep/src/irep/Tarefa.java[m
+[1mindex dd642ef..d90366a 100644[m
+[1m--- a/iRep/src/irep/Tarefa.java[m
+[1m+++ b/iRep/src/irep/Tarefa.java[m
+[36m@@ -31,11 +31,10 @@[m [mpublic class Tarefa {[m
+         this.setIsFeito(false);[m
+     }[m
+     [m
+[31m-    @Override[m
+[31m-    public String toString(){[m
+[31m-        return ("Nome: " + this.getNome() + "\n" +[m
+[31m-                "ID: " + this.getIdTarefa() + "\n" +[m
+[31m-                "Tarefa está feita? " + this.getIsFeito() + "\n");[m
+[32m+[m[32m    public void getTarefa(){[m
+[32m+[m[32m        System.out.println("Nome: "+this.getNome());[m
+[32m+[m[32m        System.out.println("ID: "+this.getIdTarefa());[m
+[32m+[m[32m        System.out.println("Tarefa está feita? "+getIsFeito());[m
+     }[m
+ }[m
+ [m
