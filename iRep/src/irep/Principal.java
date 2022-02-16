@@ -7,6 +7,7 @@
 
 package irep;
 
+import irep.Visão.TelaUsuario;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
@@ -15,26 +16,27 @@ import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) throws Exception{
-        
-        Principal principal = new Principal();
-        List<Morador> moradores = new LinkedList<Morador>();
-        List<Conta> contas = new LinkedList<Conta>();
-        List<Tarefa> tarefas = new LinkedList<Tarefa>();        
-
-        principal.cadastraMorador(moradores);
-        for (int i = 0; i < moradores.size(); i++) {
-            System.out.println(moradores.get(i));
-        }
-
-        principal.cadastraConta(contas);
-        for (int i = 0; i < contas.size(); i++) {
-            System.out.println(contas.get(i));
-        }
-        
-        principal.cadastraTarefa(tarefas);
-        for (int i = 0; i < tarefas.size(); i++) {
-            System.out.println(tarefas.get(i));           
-        }
+        TelaUsuario tela = new TelaUsuario();
+        tela.telaInicial();
+//        Principal principal = new Principal();
+//        List<Morador> moradores = new LinkedList<Morador>();
+//        List<Conta> contas = new LinkedList<Conta>();
+//        List<Tarefa> tarefas = new LinkedList<Tarefa>();        
+//
+//        principal.cadastraMorador(moradores);
+//        for (int i = 0; i < moradores.size(); i++) {
+//            System.out.println(moradores.get(i));
+//        }
+//
+//        principal.cadastraConta(contas);
+//        for (int i = 0; i < contas.size(); i++) {
+//            System.out.println(contas.get(i));
+//        }
+//        
+//        principal.cadastraTarefa(tarefas);
+//        for (int i = 0; i < tarefas.size(); i++) {
+//            System.out.println(tarefas.get(i));           
+//        }
     }
     
     public void cadastraMorador(List moradores)throws Exception {
