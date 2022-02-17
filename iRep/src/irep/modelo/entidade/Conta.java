@@ -5,20 +5,23 @@
 *   Professor: Fabrício Aguiar Silva
 */
 
-package irep;
+package irep.modelo.entidade;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Conta {
+    private Long idConta;
     private String nome;
-    private double valorConta, valorEmAberto;
+    private double valorConta;
+    boolean isPaga;
     LocalDate vencimento;    
     
     // Getters
+    public Long getIdConta(){ return this.idConta; }
     public String getNome(){ return this.nome; }
     public double getValorConta(){ return this.valorConta; }
-    public double getValorEmAberto(){ return this.valorEmAberto; }
+    public boolean getIsPaga(){ return this.isPaga; }
     public LocalDate getVencimento(){ return this.vencimento; }
     
     // Setters
@@ -33,30 +36,21 @@ public class Conta {
         }
         this.valorConta = valorConta;
     }
-    public void setValorEmAberto(double valorPago){ this.valorEmAberto = this.valorEmAberto - valorPago; }
     public void setVencimento(LocalDate vencimento){ this.vencimento = vencimento; }
+    public void setIsPaga(boolean isPaga){ this.isPaga = false; }
     
     // Constructor     
     public Conta(String nome, double valorConta, LocalDate vencimento){
         this.setNome(nome);
         this.setValorConta(valorConta);
-        this.valorEmAberto = this.getValorConta();
         this.setVencimento(vencimento);
-    }
-
-    public boolean isPaga(){
-        if(this.valorEmAberto == 0){
-            return true;
-        }else{
-            return false;
-        }        
     }
     
     @Override
     public String toString(){
         return ("Nome: " + this.getNome() + "\n" +
                 "Valor: " + this.getValorConta() + "\n" +
-                "Valor em Aberto: " + this.getValorEmAberto() + "\n" +
+                "Valor em Aberto: " + this.getIsPaga()+ "\n" +
                 "Vencimento: " + this.getVencimento() + "\n");
     }
 }

@@ -7,7 +7,12 @@
 
 package irep;
 
-import irep.Visão.TelaUsuario;
+import irep.modelo.entidade.Conta;
+import irep.modelo.entidade.Decisao;
+import irep.modelo.entidade.Morador;
+import irep.modelo.entidade.Tarefa;
+
+import irep.visao.TelaInicial;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
@@ -15,8 +20,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
-    public static void main(String[] args) throws Exception{
-        TelaUsuario tela = new TelaUsuario();
+    public static void main(String[] args) {
+        TelaInicial tela = new TelaInicial();
         tela.telaInicial();
 //        Principal principal = new Principal();
 //        List<Morador> moradores = new LinkedList<Morador>();

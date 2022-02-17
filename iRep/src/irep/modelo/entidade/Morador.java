@@ -5,7 +5,7 @@
 *   Professor: Fabrício Aguiar Silva
 */
 
-package irep;
+package irep.modelo.entidade;
 
 import java.time.LocalDate;
 

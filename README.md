@@ -31,11 +31,16 @@
      * Notificação para lembrar das tarefas (próximo ao fim da semana) 
      * Checklist
   3. Gerenciamento de **Decisões**
-     * Cadastro de Votações
-     * Votação
-     * As votações fazem parte das decisões que a casa toma (Ex: Comprar um Freezer - compra **para a casa** com alto custo, que necessita de aprovação de todos os moradores)
+     * Cadastro de Decisões
+       * Decisões já tomadas
+       * Decisões a serem tomadas
+     * Votação 
+       * moradores votam
+       * caso a maioria vote 'sim', a decisão é tomada,
+       * caso contrário, a decisão é recusada
+     * Ex: Comprar um Freezer - compra **para a casa** com **alto custo**, que necessita de aprovação da **maioria** dos moradores
   5. **Moradores**
-     * Usuários
+     * **Usuários**
      * Hierarquia - calouro e veterano (opcional) 
   
   
