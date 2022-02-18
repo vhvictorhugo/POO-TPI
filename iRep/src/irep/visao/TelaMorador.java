@@ -5,8 +5,8 @@
 *   Professor: Fabrício Aguiar Silva
 */
 
-package irep.modelo.servico;
+package irep.visao;
 
-public class MoradorServico {
+public class TelaMorador {
 
 }
