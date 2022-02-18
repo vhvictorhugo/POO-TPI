@@ -10,18 +10,25 @@ package irep.modelo.entidade;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Conta {
-    private Long idConta;
+public class Conta {    
+//    private int idConta;
+//    private int idContaCont = 0;
     private String nome;
     private double valorConta;
-    boolean isPaga;
-    LocalDate vencimento;    
+    private boolean isPaga;
+    private LocalDate vencimento;    
     
     // Getters
-    public Long getIdConta(){ return this.idConta; }
+//    public int getIdConta(){ return this.idConta; }
     public String getNome(){ return this.nome; }
     public double getValorConta(){ return this.valorConta; }
-    public boolean getIsPaga(){ return this.isPaga; }
+    public String getIsPaga(){
+        if (this.isPaga == true){
+            return "Paga";
+        }
+        
+        return "Em Aberto";
+    }
     public LocalDate getVencimento(){ return this.vencimento; }
     
     // Setters
@@ -37,20 +44,22 @@ public class Conta {
         this.valorConta = valorConta;
     }
     public void setVencimento(LocalDate vencimento){ this.vencimento = vencimento; }
-    public void setIsPaga(boolean isPaga){ this.isPaga = false; }
+    public void setIsPaga(boolean isPaga){ this.isPaga = isPaga; }
     
     // Constructor     
     public Conta(String nome, double valorConta, LocalDate vencimento){
         this.setNome(nome);
         this.setValorConta(valorConta);
         this.setVencimento(vencimento);
+//        this.idConta = idContaCont++;
     }
     
     @Override
     public String toString(){
-        return ("Nome: " + this.getNome() + "\n" +
+//        return ("ID: " + this.getIdConta()+ "\n" +
+          return ("Nome: " + this.getNome() + "\n" +
                 "Valor: " + this.getValorConta() + "\n" +
-                "Valor em Aberto: " + this.getIsPaga()+ "\n" +
+                "Status: " + this.getIsPaga()+ "\n" +
                 "Vencimento: " + this.getVencimento() + "\n");
     }
 }

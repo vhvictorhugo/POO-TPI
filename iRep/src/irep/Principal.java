@@ -7,22 +7,18 @@
 
 package irep;
 
-import irep.modelo.entidade.Conta;
-import irep.modelo.entidade.Decisao;
-import irep.modelo.entidade.Morador;
-import irep.modelo.entidade.Tarefa;
+import irep.controlador.ContaController;
 
 import irep.visao.TelaInicial;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
         TelaInicial tela = new TelaInicial();
-        tela.telaInicial();
+        ContaController contaController = new ContaController();
+        
+        tela.mostrar(contaController);
+    }
+}
 //        Principal principal = new Principal();
 //        List<Morador> moradores = new LinkedList<Morador>();
 //        List<Conta> contas = new LinkedList<Conta>();
@@ -41,98 +37,97 @@ public class Principal {
 //        principal.cadastraTarefa(tarefas);
 //        for (int i = 0; i < tarefas.size(); i++) {
 //            System.out.println(tarefas.get(i));           
+////        }
+//    }
+//    
+//    public void cadastraMorador(List moradores)throws Exception {
+//        System.out.println("---------- CADASTRO DE MORADORES ----------");
+//        
+//        int qtMoradores;
+//        String nome, apelido, curso, dataNascimentoLeitura;
+//        
+//        Scanner scan = new Scanner(System.in); 
+//        
+//        System.out.print("\nEntre com a quantidade de moradores a cadastrar: ");        
+//        
+//        qtMoradores = scan.nextInt();
+//        
+//        for (int i = 0; i < qtMoradores; i++) {
+//            
+//            System.out.println("---------- MORADOR "+(i+1)+" ----------");
+//            System.out.print("Entre com o nome: ");
+//            if(i == 0) scan.nextLine();    // conserta bug scan
+//            nome = scan.nextLine();            
+//            System.out.print("Entre com o apelido: ");
+//            apelido = scan.nextLine();
+//            System.out.print("Entre com o curso: ");
+//            curso = scan.nextLine();
+//            System.out.print("Entre com a data de nascimento (dd/MM/yyyy): ");
+//            dataNascimentoLeitura = scan.nextLine();
+//            
+//            // converte data do tipo 'String' em data do tipo 'Date'
+//            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+//            LocalDate dataNascimento = LocalDate.parse(dataNascimentoLeitura, formato); 
+//            
+//            Morador morador = new Morador(nome, apelido, curso, dataNascimento);            
+//            moradores.add(morador);
 //        }
-    }
-    
-    public void cadastraMorador(List moradores)throws Exception {
-        System.out.println("---------- CADASTRO DE MORADORES ----------");
-        
-        int qtMoradores;
-        String nome, apelido, curso, dataNascimentoLeitura;
-        
-        Scanner scan = new Scanner(System.in); 
-        
-        System.out.print("\nEntre com a quantidade de moradores a cadastrar: ");        
-        
-        qtMoradores = scan.nextInt();
-        
-        for (int i = 0; i < qtMoradores; i++) {
-            
-            System.out.println("---------- MORADOR "+(i+1)+" ----------");
-            System.out.print("Entre com o nome: ");
-            if(i == 0) scan.nextLine();    // conserta bug scan
-            nome = scan.nextLine();            
-            System.out.print("Entre com o apelido: ");
-            apelido = scan.nextLine();
-            System.out.print("Entre com o curso: ");
-            curso = scan.nextLine();
-            System.out.print("Entre com a data de nascimento (dd/MM/yyyy): ");
-            dataNascimentoLeitura = scan.nextLine();
-            
-            // converte data do tipo 'String' em data do tipo 'Date'
-            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
-            LocalDate dataNascimento = LocalDate.parse(dataNascimentoLeitura, formato); 
-            
-            Morador morador = new Morador(nome, apelido, curso, dataNascimento);            
-            moradores.add(morador);
-        }
-    }    
-    public void cadastraConta(List contas){
-        System.out.println("---------- CADASTRO DE CONTAS ----------");
-        
-        int qtContas;
-        String nome, vencimentoLeitura;
-        double valorConta;
-        
-        Scanner scan = new Scanner(System.in); 
-        
-        System.out.print("\nEntre com a quantidade de contas a cadastrar: ");        
-        
-        qtContas = scan.nextInt();
-        
-        for (int i = 0; i < qtContas; i++) {
-            
-            System.out.println("---------- CONTA "+(i+1)+" ----------");
-            System.out.print("Entre com o nome: ");
-            if(i == 0) scan.nextLine();    // conserta bug scan
-            nome = scan.nextLine();
-            System.out.print("Entre com o valor: ");
-            valorConta = scan.nextDouble();
-            System.out.print("Entre com a data de vencimento (dd/MM/yyyy): ");
-            if(i == 0) scan.nextLine();    // conserta bug scan
-            vencimentoLeitura = scan.nextLine();
-            
-            // converte data do tipo 'String' em data do tipo 'Date'
-            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
-            LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato); 
-            
-            Conta conta = new Conta(nome, valorConta, dataVencimento);            
-            contas.add(conta);
-        }
-    }
-    public void cadastraTarefa(List tarefas){
-        System.out.println("---------- CADASTRO DE TAREFAS ----------");
-        
-        int qtTarefas;
-        String nome;
-        long idTarefa;
-        
-        Scanner scan = new Scanner(System.in); 
-        
-        System.out.print("\nEntre com a quantidade de tarefas a cadastrar: ");        
-        
-        qtTarefas = scan.nextInt();
-        
-        for (int i = 0; i < qtTarefas; i++) {
-            
-            System.out.println("---------- TAREFA "+(i+1)+" ----------");
-            System.out.print("Entre com o nome da Tarefa: ");
-            if(i == 0) scan.nextLine();    // conserta bug scan
-            nome = scan.nextLine();
-            System.out.print("Entre com o id: ");
-            idTarefa = scan.nextLong();
-            Tarefa tarefa = new Tarefa(nome, idTarefa);            
-            tarefas.add(tarefa);
-        }
-    }
-}
+//    }    
+//    public void cadastraConta(List contas){
+//        System.out.println("---------- CADASTRO DE CONTAS ----------");
+//        
+//        int qtContas;
+//        String nome, vencimentoLeitura;
+//        double valorConta;
+//        
+//        Scanner scan = new Scanner(System.in); 
+//        
+//        System.out.print("\nEntre com a quantidade de contas a cadastrar: ");        
+//        
+//        qtContas = scan.nextInt();
+//        
+//        for (int i = 0; i < qtContas; i++) {
+//            
+//            System.out.println("---------- CONTA "+(i+1)+" ----------");
+//            System.out.print("Entre com o nome: ");
+//            if(i == 0) scan.nextLine();    // conserta bug scan
+//            nome = scan.nextLine();
+//            System.out.print("Entre com o valor: ");
+//            valorConta = scan.nextDouble();
+//            System.out.print("Entre com a data de vencimento (dd/MM/yyyy): ");
+//            if(i == 0) scan.nextLine();    // conserta bug scan
+//            vencimentoLeitura = scan.nextLine();
+//            
+//            // converte data do tipo 'String' em data do tipo 'Date'
+//            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+//            LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato); 
+//            
+//            Conta conta = new Conta(nome, valorConta, dataVencimento);            
+//            contas.add(conta);
+//        }
+//    }
+//    public void cadastraTarefa(List tarefas){
+//        System.out.println("---------- CADASTRO DE TAREFAS ----------");
+//        
+//        int qtTarefas;
+//        String nome;
+//        long idTarefa;
+//        
+//        Scanner scan = new Scanner(System.in); 
+//        
+//        System.out.print("\nEntre com a quantidade de tarefas a cadastrar: ");        
+//        
+//        qtTarefas = scan.nextInt();
+//        
+//        for (int i = 0; i < qtTarefas; i++) {
+//            
+//            System.out.println("---------- TAREFA "+(i+1)+" ----------");
+//            System.out.print("Entre com o nome da Tarefa: ");
+//            if(i == 0) scan.nextLine();    // conserta bug scan
+//            nome = scan.nextLine();
+//            System.out.print("Entre com o id: ");
+//            idTarefa = scan.nextLong();
+//            Tarefa tarefa = new Tarefa(nome, idTarefa);            
+//            tarefas.add(tarefa);
+//        }
+//    }

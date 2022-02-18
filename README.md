@@ -20,10 +20,8 @@
 
   1. Gerenciamento de **Contas**
      * Cadastro de Contas (luz, água, internet, etc)
-     * Notificação para lembrar das contas (próxima da data de vencimento)
+     * Notificação para lembrar das contas (próxima da data de vencimento) (funcionalidade extra)
      * Efetua o pagamento da conta
-       * Efetua o pagamento (morador)
-       * Efetua o pagamento (conta)
      
   2. Gerenciamento de **Tarefas da Casa**
      * Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)

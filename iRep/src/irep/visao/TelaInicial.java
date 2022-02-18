@@ -7,6 +7,7 @@
 
 package irep.visao;
 
+import irep.controlador.ContaController;
 import java.util.Scanner;
 
 
@@ -17,8 +18,10 @@ public class TelaInicial {
         scan = new Scanner(System.in);
     }
     
-    public void mostrar(){
+    public void mostrar(ContaController controller){
         int opcao;
+        
+        TelaContas telaContas = new TelaContas();
         
         opcao = mostrarMenu();
         while (opcao != 5){
@@ -29,16 +32,14 @@ public class TelaInicial {
                     break;
                 case 2:
                     // aba contas
+                    telaContas.mostrar(controller);
                     break;
                 case 3:
                     // aba tarefas
+                    
                     break;
                 case 4:
                     // aba decisões
-                    break;
-                case 5:
-                    // aba decisões
-                    System.exit(0);
                     break;
             default:
                 System.err.println("Opção inválida!");
@@ -54,12 +55,12 @@ public class TelaInicial {
     private int mostrarMenu(){
         int opcao;
         System.out.println("-------------- iRep --------------");
-        System.out.println("1-Visualizar Perfil");
-        System.out.println("2-Contas");
-        System.out.println("3-Tarefas");
-        System.out.println("4-Decisões");
+        System.out.println("1- Visualizar Perfil");
+        System.out.println("2- Contas");
+        System.out.println("3- Tarefas");
+        System.out.println("4- Decisões");
         System.out.println("5- Sair");
-        System.out.println("\nDigite um numero: ");
+        System.out.print("\nDigite um numero: ");
         
         opcao = scan.nextInt();
         
