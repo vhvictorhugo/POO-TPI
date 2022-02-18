@@ -11,15 +11,14 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Conta {    
-//    private int idConta;
-//    private int idContaCont = 0;
+    private int idConta;
     private String nome;
     private double valorConta;
     private boolean isPaga;
     private LocalDate vencimento;    
     
     // Getters
-//    public int getIdConta(){ return this.idConta; }
+    public int getIdConta(){ return this.idConta; }
     public String getNome(){ return this.nome; }
     public double getValorConta(){ return this.valorConta; }
     public String getIsPaga(){
@@ -47,17 +46,17 @@ public class Conta {
     public void setIsPaga(boolean isPaga){ this.isPaga = isPaga; }
     
     // Constructor     
-    public Conta(String nome, double valorConta, LocalDate vencimento){
+    public Conta(int idConta, String nome, double valorConta, LocalDate vencimento){
         this.setNome(nome);
         this.setValorConta(valorConta);
-        this.setVencimento(vencimento);
-//        this.idConta = idContaCont++;
+        this.setVencimento(vencimento);        
+        this.idConta = idConta;
     }
     
     @Override
     public String toString(){
-//        return ("ID: " + this.getIdConta()+ "\n" +
-          return ("Nome: " + this.getNome() + "\n" +
+        return ("ID: " + this.getIdConta()+ "\n" +
+                "Nome: " + this.getNome() + "\n" +
                 "Valor: " + this.getValorConta() + "\n" +
                 "Status: " + this.getIsPaga()+ "\n" +
                 "Vencimento: " + this.getVencimento() + "\n");

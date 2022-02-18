@@ -10,6 +10,16 @@
 
 
 
+Guia:
+
+1- fazer a estrutura do projeto aplicando os conceitos da arquitetura MVC
+
+2- verificar erros do usuário 
+
+2.1- criar contas, tarefas, etc com id iguais
+
+
+
 ###### Descrição:
 
 - O projeto **iRep** tem como principal **objetivo** construir do zero um sistema utilizando a linguagem de programação **Java** para **moradores de uma república** gerenciarem diversas situações cotidianas de uma república para facilitar a organização geral da casa, facilitando a boa convivência. 

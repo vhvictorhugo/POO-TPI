@@ -8,19 +8,20 @@
 package irep.visao;
 
 import irep.controlador.ContaController;
-import irep.modelo.entidade.Conta;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class TelaContas {
     Scanner scan;
+    ContaController controller;
     
     public TelaContas (){        
-        scan = new Scanner(System.in);        
+        scan = new Scanner(System.in);   
+        controller = new ContaController();
     }
     
-    public void mostrar(ContaController controller){
+    public void mostrar(){
         int opcao;
         
         opcao = mostrarMenu();
@@ -28,27 +29,21 @@ public class TelaContas {
             switch(opcao){
                 case 1:
                     // Cadastrar conta
-                    controller.addConta(cadastroConta());
-                    System.out.println("Conta adicionada com sucesso!");
+                    cadastroConta();
                     break;
                 case 2:
-                    // listar contas                    
-                    System.out.println(controller.listarContas());
-                    System.out.println("Listagem efetuada com sucesso!");
+                    // listar contas
+                    listarContas();                    
                     break;
                 case 3:
                     // pagar conta
-                    System.out.print("Digite o ID da conta (de acordo com o indice) a ser paga: ");
-                    int idConta = scan.nextInt();
-                    controller.efetuaPagamentoConta(idConta);
-                    System.out.println("Conta paga com sucesso!");
+                    pagamentoConta();                    
                     break;
-            default:
-                System.err.println("Opção inválida!");
-            }
-            
+                default:
+                    System.err.println("Opção inválida!");
+            }            
             opcao = mostrarMenu();
-        }        
+        }
     }
     
     private int mostrarMenu(){
@@ -62,12 +57,15 @@ public class TelaContas {
         
         opcao = scan.nextInt();
         
-        return opcao;
-        
+        return opcao;        
     }
     
-    private Conta cadastroConta(){
+    private void cadastroConta(){
         System.out.println("-------------- CADASTRO DE CONTAS --------------");
+        
+        System.out.print("Entre com o ID da conta: ");
+        scan.nextLine();
+        int idConta = scan.nextInt();
         
         System.out.print("Entre com o nome: ");
         scan.nextLine();
@@ -83,9 +81,27 @@ public class TelaContas {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
         LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato); 
 
-        Conta conta = new Conta(nome, valorConta, dataVencimento);
+        controller.addConta(idConta, nome, valorConta, dataVencimento);
         
-        return conta;
-    }   
-
+    }
+    
+    private void listarContas() {
+        System.out.println("-------------- LISTAGEM DE CONTAS --------------");
+        String contas;
+        
+        contas = controller.listarContas();
+        System.out.println(contas);
+    }
+    
+    private void pagamentoConta(){
+        System.out.println("-------------- PAGAMENTO DE CONTAS --------------");
+        
+        System.out.print("Digite o ID da conta a ser paga: ");
+        
+        int idConta;
+        idConta = scan.nextInt();
+        
+        controller.efetuaPagamentoConta(idConta); 
+        
+    }
 }

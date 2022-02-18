@@ -4,6 +4,7 @@
 *   Matéria: CCF 313 - Programação Orientada a Objetos
 *   Professor: Fabrício Aguiar Silva
 */
+
 package irep.modelo.entidade;
 
 public class Decisao {

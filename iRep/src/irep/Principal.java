@@ -14,8 +14,7 @@ import irep.visao.TelaInicial;
 public class Principal {
     public static void main(String[] args) {
         TelaInicial tela = new TelaInicial();
-        ContaController contaController = new ContaController();
         
-        tela.mostrar(contaController);
+        tela.mostrar();
     }
 }

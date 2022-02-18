@@ -8,30 +8,45 @@
 package irep.controlador;
 
 import irep.modelo.entidade.Conta;
-import java.util.ArrayList;
-import java.util.List;
+import irep.modelo.persistencia.ContaDAO;
+import java.time.LocalDate;
 
 public class ContaController {
     
-    private List <Conta> contas = new ArrayList<>();
+    ContaDAO contaDAO;
     
     public ContaController (){
-        this.contas = new ArrayList();
+        this.contaDAO = new ContaDAO();
     }
     
-    public void addConta(Conta c){
-        contas.add(c);
+    public void addConta(int idConta, String nome, double valorConta, LocalDate vencimento){
+        Conta c = new Conta(idConta, nome, valorConta, vencimento);
+        
+        Conta cVerificaExistente = contaDAO.pesquisaConta(idConta); // recebe o idAtual e verifica pelo id se há itens iguais
+        
+        if(cVerificaExistente != null){
+            System.err.println("Produto com ID "+ idConta + " ja existente!");
+        }else{
+            contaDAO.addConta(c);
+        }
+        
     }
     
     public String listarContas(){
         String contasStr = "";
+        if (contaDAO.listarContas().size() > 0){            
+            contasStr += contaDAO.listarContas().toString();
+            return contasStr;
+        }
         
-        contasStr += contas.toString();
-        
-        return contasStr;
+        return "Sem contas cadastradas!";
     }
     
     public void efetuaPagamentoConta(int idConta){
-        contas.get(idConta).setIsPaga(true);
+        for (Conta c : contaDAO.listarContas()){
+            if(c.getIdConta() == idConta){
+                c.setIsPaga(true);
+            }            
+        }
     }
 }
