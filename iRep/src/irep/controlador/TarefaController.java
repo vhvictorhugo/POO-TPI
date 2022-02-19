@@ -25,7 +25,7 @@ public class TarefaController {
         
         Tarefa tVerificaExistente = tarefaDAO.pesquisaTarefa(idTarefa);
         if(tVerificaExistente != null){
-            System.err.println("Produto com ID "+ idTarefa + " ja existente!");
+            System.err.println("Tarefa com ID "+ idTarefa + " ja existente!");
         }else{
             tarefaDAO.addTarefa(t);
         }       

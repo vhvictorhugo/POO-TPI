@@ -27,7 +27,7 @@ public class ContaController {
         Conta cVerificaExistente = contaDAO.pesquisaConta(idConta); // recebe o idAtual e verifica pelo id se há itens iguais
         
         if(cVerificaExistente != null){
-            System.err.println("Produto com ID "+ idConta + " ja existente!");
+            System.err.println("Conta com ID "+ idConta + " ja existente!");
         }else{
             contaDAO.addConta(c);
         }

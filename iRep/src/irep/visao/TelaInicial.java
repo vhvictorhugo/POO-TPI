@@ -20,7 +20,8 @@ public class TelaInicial {
     public void mostrar(){
         int opcao;        
         TelaContas telaContas = new TelaContas();
-        TelaTarefas telaTarefas = new TelaTarefas();
+        //TelaTarefas telaTarefas = new TelaTarefas();
+        TelaDecisoes telaDecisoes = new TelaDecisoes();
         
         opcao = mostrarMenu();
         while (opcao != 5){            
@@ -34,10 +35,11 @@ public class TelaInicial {
                     break;
                 case 3:
                     // aba tarefas   
-                    telaTarefas.mostrar();
+                    //telaTarefas.mostrar();
                     break;
                 case 4:
                     // aba decisões
+                    telaDecisoes.mostrar();
                     break;
             default:
                 System.err.println("Opção inválida!");
