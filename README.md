@@ -18,6 +18,10 @@ Guia:
 
 2.1- criar contas, tarefas, etc com id iguais
 
+3- verificar autenticações
+
+3.1- quais usuários podem mudar o estado 
+
 
 
 ###### Descrição:
