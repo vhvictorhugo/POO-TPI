@@ -8,34 +8,41 @@
 package irep.modelo.entidade;
 
 public class Tarefa {
-    private String nome;
-    private Long idTarefa;
-    //private Morador nome;
+    private int idTarefa;
+    private String nome;    
+    private int idMorador;
     private boolean isFeito;
 
     // Getters
-    public String getNome(){ return this.nome; }
-    public Long getIdTarefa(){ return  this.idTarefa;}
-    public boolean getIsFeito(){ return this.isFeito; }
+    public int getIdTarefa(){ return  this.idTarefa;}
+    public String getNome(){ return this.nome; }   
+    public int getIdMorador() { return this.idMorador; }
+    public String getIsFeito(){
+        if (this.isFeito == true){
+            return "Feita";
+        }
+        
+        return "Pendente";
+    }
 
     // Setters
-    public void setNome(String nome){ this.nome = nome; }
-    public void setIdTarefa( Long id){  this.idTarefa = id; }
-    //public void setMoradores(Morador nome){ this.nome = nome; }
+    public void setIdTarefa(int id){  this.idTarefa = id; }
+    public void setNome(String nome){ this.nome = nome; }   
+    public void setIdMorador(int idMorador){ this.idMorador = idMorador; }
     public void setIsFeito(boolean isFeito){ this.isFeito = isFeito; }
     
-    public Tarefa(String tarefa , Long idTarefas){
+    public Tarefa(int idTarefa, String tarefa){
         this.setNome(tarefa);
-        this.setIdTarefa(idTarefas);
-        //this.setMoradores(nome);
+        this.setIdTarefa(idTarefa);
         this.setIsFeito(false);
     }
     
     @Override
     public String toString(){
-        return ("Nome: " + this.getNome() + "\n" +
-                "ID: " + this.getIdTarefa() + "\n" +
-                "Tarefa está feita? " + this.getIsFeito() + "\n");
+        return ("ID: " + this.getIdTarefa() + "\n" +
+                "Nome: " + this.getNome() + "\n" +                
+                "Status: " + this.getIsFeito() + "\n" + 
+                "ID Morador: "+ this.getIdMorador() + "\n");
     }
 }
 

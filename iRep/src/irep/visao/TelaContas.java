@@ -10,6 +10,7 @@ package irep.visao;
 import irep.controlador.ContaController;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
 public class TelaContas {
@@ -87,10 +88,17 @@ public class TelaContas {
     
     private void listarContas() {
         System.out.println("-------------- LISTAGEM DE CONTAS --------------");
-        String contas;
+        List<String> contas = controller.listarContas();
         
-        contas = controller.listarContas();
-        System.out.println(contas);
+        if(contas.size() < 0){
+           System.err.println("Sem contas cadastradas!");
+           return;
+       }
+        
+        System.out.println("Total de contas: "+ contas.size());
+        for (String c : contas){
+            System.out.println(c);
+        }
     }
     
     private void pagamentoConta(){

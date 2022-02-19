@@ -7,8 +7,6 @@
 
 package irep;
 
-import irep.controlador.ContaController;
-
 import irep.visao.TelaInicial;
 
 public class Principal {

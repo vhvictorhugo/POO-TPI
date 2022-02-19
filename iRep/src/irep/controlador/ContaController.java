@@ -10,6 +10,8 @@ package irep.controlador;
 import irep.modelo.entidade.Conta;
 import irep.modelo.persistencia.ContaDAO;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContaController {
     
@@ -32,16 +34,18 @@ public class ContaController {
         
     }
     
-    public String listarContas(){
-        String contasStr = "";
-        if (contaDAO.listarContas().size() > 0){            
-            contasStr += contaDAO.listarContas().toString();
-            return contasStr;
-        }
+    public List<String> listarContas(){
+        List <String> contasStr = new ArrayList<>();
+        List <Conta> contas = contaDAO.listarContas();
         
-        return "Sem contas cadastradas!";
+        for (Conta c : contas){
+            contasStr.add(c.toString());
+        }        
+        return contasStr;
     }
     
+    // criar solucao para verificar se a conta ja esta paga
+    // criar solucao para tratar id inexistente
     public void efetuaPagamentoConta(int idConta){
         for (Conta c : contaDAO.listarContas()){
             if(c.getIdConta() == idConta){

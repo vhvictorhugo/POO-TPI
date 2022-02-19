@@ -20,6 +20,7 @@ public class TelaInicial {
     public void mostrar(){
         int opcao;        
         TelaContas telaContas = new TelaContas();
+        TelaTarefas telaTarefas = new TelaTarefas();
         
         opcao = mostrarMenu();
         while (opcao != 5){            
@@ -32,7 +33,8 @@ public class TelaInicial {
                     telaContas.mostrar();
                     break;
                 case 3:
-                    // aba tarefas                    
+                    // aba tarefas   
+                    telaTarefas.mostrar();
                     break;
                 case 4:
                     // aba decisões

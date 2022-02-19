@@ -24,6 +24,10 @@ public class ContaDAO {
         contas.add(c);
     }
     
+    public List<Conta> listarContas(){
+        return contas;
+    }
+    
     public Conta pesquisaConta(int idConta){
         for(Conta c : contas){
             if(c.getIdConta() == idConta){
@@ -31,9 +35,5 @@ public class ContaDAO {
             }            
         }
         return null;
-    }
-    
-    public List<Conta> listarContas(){
-        return contas;
     }
 }
