@@ -33,24 +33,33 @@ Guia:
 - O projeto conta com as seguintes funcionalidades:
 
   1. Gerenciamento de **Contas**
-     * Cadastro de Contas (luz, água, internet, etc)
-     * Notificação para lembrar das contas (próxima da data de vencimento) (funcionalidade extra)
-     * Efetua o pagamento da conta
+     
+     - [x] Cadastro de Contas (luz, água, internet, etc)
+     - [x] Listar contas
+     - [x] Efetua o pagamento da conta
+     - [ ] Notificação para lembrar das contas (próxima da data de vencimento) (funcionalidade extra)
      
   2. Gerenciamento de **Tarefas da Casa**
-     * Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
-     * Atribuição de Tarefas para os moradores - cada morador terá uma determinada tarefa em uma determinada semana
-     * Notificação para lembrar das tarefas (próximo ao fim da semana) 
-     * Checklist
+  
+     - [ ] Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
+     - [ ] Lista tarefas
+       - [ ] Checklist (extra/interface) - para cada tarefa
+     - [ ] Atribui tarefa - cada morador terá uma determinada tarefa em uma determinada semana
+     - [ ] Conclui tarefa
+     - [ ] Notificação para lembrar das tarefas (próximo ao fim da semana) 
+  
   3. Gerenciamento de **Decisões**
-     * Cadastro de Decisões
-       * Decisões já tomadas
-       * Decisões a serem tomadas
-     * Votação 
-       * moradores votam
-       * caso a maioria vote 'sim', a decisão é tomada,
-       * caso contrário, a decisão é recusada
+  
+     - [ ] Cadastro de Decisões
+     - [ ] Lista Decisões
+       - [ ] Decisões tomadas
+       - [ ] Decisões pendentes
+     - [ ] Votação
+       - [ ] Contabilizar Voto - morador vota sim ou não para a decisão
+       - [ ] Resultado - contagem
+  
      * Ex: Comprar um Freezer - compra **para a casa** com **alto custo**, que necessita de aprovação da **maioria** dos moradores
+  
   5. **Moradores**
      * **Usuários**
      * Hierarquia - calouro e veterano (opcional) 
