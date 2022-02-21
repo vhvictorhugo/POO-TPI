@@ -4,8 +4,9 @@
 *   Matéria: CCF 313 - Programação Orientada a Objetos
 *   Professor: Fabrício Aguiar Silva
 */
-package irep;
 
-public class Reuniao {
-    
+package irep.visao;
+
+public class TelaMorador {
+
 }

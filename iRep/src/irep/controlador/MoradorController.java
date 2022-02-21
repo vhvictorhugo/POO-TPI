@@ -4,8 +4,9 @@
 *   Matéria: CCF 313 - Programação Orientada a Objetos
 *   Professor: Fabrício Aguiar Silva
 */
-package irep;
 
-public class Decisao {
-    
+package irep.controlador;
+
+public class MoradorController {
+
 }

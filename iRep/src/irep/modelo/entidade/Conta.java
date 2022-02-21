@@ -5,20 +5,29 @@
 *   Professor: Fabrício Aguiar Silva
 */
 
-package irep;
+package irep.modelo.entidade;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Conta {
+public class Conta {    
+    private int idConta;
     private String nome;
-    private double valorConta, valorEmAberto;
-    LocalDate vencimento;    
+    private double valorConta;
+    private boolean isPaga;
+    private LocalDate vencimento;    
     
     // Getters
+    public int getIdConta(){ return this.idConta; }
     public String getNome(){ return this.nome; }
     public double getValorConta(){ return this.valorConta; }
-    public double getValorEmAberto(){ return this.valorEmAberto; }
+    public String getIsPaga(){
+        if (this.isPaga == true){
+            return "Paga";
+        }
+        
+        return "Em Aberto";
+    }
     public LocalDate getVencimento(){ return this.vencimento; }
     
     // Setters
@@ -33,30 +42,23 @@ public class Conta {
         }
         this.valorConta = valorConta;
     }
-    public void setValorEmAberto(double valorPago){ this.valorEmAberto = this.valorEmAberto - valorPago; }
     public void setVencimento(LocalDate vencimento){ this.vencimento = vencimento; }
+    public void setIsPaga(boolean isPaga){ this.isPaga = isPaga; }
     
     // Constructor     
-    public Conta(String nome, double valorConta, LocalDate vencimento){
+    public Conta(int idConta, String nome, double valorConta, LocalDate vencimento){
         this.setNome(nome);
         this.setValorConta(valorConta);
-        this.valorEmAberto = this.getValorConta();
-        this.setVencimento(vencimento);
-    }
-
-    public boolean isPaga(){
-        if(this.valorEmAberto == 0){
-            return true;
-        }else{
-            return false;
-        }        
+        this.setVencimento(vencimento);        
+        this.idConta = idConta;
     }
     
     @Override
     public String toString(){
-        return ("Nome: " + this.getNome() + "\n" +
+        return ("ID: " + this.getIdConta()+ "\n" +
+                "Nome: " + this.getNome() + "\n" +
                 "Valor: " + this.getValorConta() + "\n" +
-                "Valor em Aberto: " + this.getValorEmAberto() + "\n" +
+                "Status: " + this.getIsPaga()+ "\n" +
                 "Vencimento: " + this.getVencimento() + "\n");
     }
 }

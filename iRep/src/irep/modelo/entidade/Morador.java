@@ -5,10 +5,11 @@
 *   Professor: Fabrício Aguiar Silva
 */
 
-package irep;
+package irep.modelo.entidade;
 
 import java.time.LocalDate;
 
+// nao podera existir morador com id == 0
 public class Morador {
     
     private String nome, apelido, curso;
