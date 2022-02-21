@@ -11,16 +11,16 @@ import irep.modelo.entidade.Decisao;
 import irep.modelo.persistencia.DecisaoDAO;
 import java.util.ArrayList;
 import java.util.List;
-
+ 
 public class DecisaoController {
-    
+    List <Decisao> decisoes;
     DecisaoDAO decisaoDAO;    
-    
+   
     public DecisaoController(){
         decisaoDAO = new DecisaoDAO();
-        
+        decisoes = new ArrayList();
     }
-
+     
     public void addDecisao(int idDecisao, String descricao) {
         Decisao d = new Decisao(idDecisao, descricao);
         
@@ -34,7 +34,7 @@ public class DecisaoController {
     }
 
     public List<String> listarDecisoes() {
-        List <Decisao> decisoes = decisoes  = decisaoDAO.listarDecisoes();
+        decisoes  = decisaoDAO.listarDecisoes();
         List <String> decisoesStr = new ArrayList<>();
         
         for (Decisao d : decisoes){
@@ -45,23 +45,27 @@ public class DecisaoController {
         return decisoesStr;
     }
 
-    public void efetuaVoto(int idDecisao, int quantidadeVotosSim, int quantidadeVotosNao) {        
-        List <Decisao> decisoes = decisoes  = decisaoDAO.listarDecisoes();
-        
-        Decisao decisao = decisaoDAO.pesquisaDecisao(idDecisao);
-        
-        int votosAtuaisPositivos = decisao.getQuantidadeVotosSim();
-        int votosAtuaisNegativos = decisao.getQuantidadeVotosNao();
-        
-        int votosNovosPositivos = votosAtuaisPositivos + quantidadeVotosSim;
-        int votosNovosNegativos = votosAtuaisNegativos + quantidadeVotosNao;
-        
-        decisao.setQuantidadeVotosSim(votosNovosPositivos);
-        decisao.setQuantidadeVotosNao(votosNovosNegativos);
+    public void efetuaVoto(boolean isVotoPositivo, int idDecisao) {
+        decisoes  = decisaoDAO.listarDecisoes();
+        int incrementaVoto;
+        for(Decisao d : decisoes){
+            if(d.getIdDecisao() == idDecisao){
+                if(isVotoPositivo == true){
+                    incrementaVoto=d.getQuantidadeVotosSim();
+                    incrementaVoto= incrementaVoto + 1;
+                    d.setQuantidadeVotosSim(incrementaVoto);
+                }else if(isVotoPositivo == false){
+                    incrementaVoto=d.getQuantidadeVotosNao();
+                    incrementaVoto= incrementaVoto + 1;
+                    d.setQuantidadeVotosNao(incrementaVoto);
+                }
+             return;
+            }
+        }       
     }
 
     public void calculaResultado(int idDecisao) {
-        List <Decisao> decisoes = decisoes  = decisaoDAO.listarDecisoes();
+        decisoes  = decisaoDAO.listarDecisoes();
         for(Decisao d : decisoes){
             if((d.getIdDecisao() == idDecisao)){
                 if(d.getQuantidadeVotosSim() > d.getQuantidadeVotosNao()){
@@ -70,11 +74,10 @@ public class DecisaoController {
                     return;
                 }else if(d.getQuantidadeVotosSim() < d.getQuantidadeVotosNao()){
                     d.setIsTomada(2);
-                    System.out.println("Calculo efetuado com sucesso n!");
+                    System.out.println("Calculo efetuado com sucesso!");
                     return;
                 }
             }
-        }
-        System.out.println("Calculo efetuado com sucesso!");
+        } 
     }
 }  
