@@ -10,20 +10,6 @@
 
 
 
-Guia:
-
-1- fazer a estrutura do projeto aplicando os conceitos da arquitetura MVC
-
-2- verificar erros do usuário 
-
-2.1- criar contas, tarefas, etc com id iguais
-
-3- verificar autenticações
-
-3.1- quais usuários podem mudar o estado 
-
-
-
 ###### Descrição:
 
 - O projeto **iRep** tem como principal **objetivo** construir do zero um sistema utilizando a linguagem de programação **Java** para **moradores de uma república** gerenciarem diversas situações cotidianas de uma república para facilitar a organização geral da casa, facilitando a boa convivência. 
@@ -41,22 +27,23 @@ Guia:
      
   2. Gerenciamento de **Tarefas da Casa**
   
-     - [ ] Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
-     - [ ] Lista tarefas
+     - [x] Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
+     - [x] Lista tarefas
        - [ ] Checklist (extra/interface) - para cada tarefa
-     - [ ] Atribui tarefa - cada morador terá uma determinada tarefa em uma determinada semana
-     - [ ] Conclui tarefa
+     - [x] Atribui tarefa - cada morador terá uma determinada tarefa em uma determinada semana
+       - [ ] Atribuição real (tarefa-morador)
+     - [x] Conclui tarefa
      - [ ] Notificação para lembrar das tarefas (próximo ao fim da semana) 
   
   3. Gerenciamento de **Decisões**
   
-     - [ ] Cadastro de Decisões
-     - [ ] Lista Decisões
+     - [x] Cadastro de Decisões
+     - [x] Lista Decisões
        - [ ] Decisões tomadas
        - [ ] Decisões pendentes
-     - [ ] Votação
-       - [ ] Contabilizar Voto - morador vota sim ou não para a decisão
-       - [ ] Resultado - contagem
+     - [x] Votação
+       - [x] Contabilizar Voto - morador vota sim ou não para a decisão
+       - [x] Resultado - contagem
   
      * Ex: Comprar um Freezer - compra **para a casa** com **alto custo**, que necessita de aprovação da **maioria** dos moradores
   
@@ -101,9 +88,20 @@ O repositório conta com 2 branches (main e dev), favor verificar os commits de 
 
 ###### Próximos Passos:
 
-• Implementar Testes Unitários;
+• <font color='red'>Implementar Testes Unitários</font>;
 
-• Converter projeto para o padrão MVC - aplicando corretamente conceitos vistos durante as aulas (modularidade, encapsulamento e herança);
+• Terminar de converter o projeto para o padrão MVC - falta somente a classe Morador;
+
+• Verificar erros de projeto:
+
+​	• verificar erros do usuário;
+
+​		• criar contas, tarefas, etc com id iguais;
+
+​		• entrar com informações erradas/inexistentes para pesquisa (erro de leitura);
+
+​	• verificar autenticações
+
+​		• quais usuários podem mudar o estado
 
 • Terminar de implementar funcionalidades listadas anteriormente.
-
