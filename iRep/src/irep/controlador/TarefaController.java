@@ -45,8 +45,11 @@ public class TarefaController {
 
     public void efetuaAtribuicaoTarefa(int idTarefa, int idMorador) {
         for (Tarefa t : tarefaDAO.listarTarefas()){
-            t.setIdTarefa(idTarefa);
-            t.setIdMorador(idMorador);
+            if(t.getIdTarefa() == idTarefa){
+                t.setIdTarefa(idTarefa);
+                t.setIdMorador(idMorador);
+            }
+            
         }
     }
 

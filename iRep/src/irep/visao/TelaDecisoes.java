@@ -55,7 +55,7 @@ public class TelaDecisoes {
         System.out.println("1- Cadastrar Decisao");
         System.out.println("2- Listar Decisoes");
         System.out.println("3- Votar Decisao");
-        System.out.println("4- RESULTADO");
+        System.out.println("4- Calcular Votos Decisao");
         System.out.println("5- Sair");
         System.out.print("\nDigite um numero: ");
         
@@ -100,7 +100,11 @@ public class TelaDecisoes {
         int idDecisao = scan.nextInt();
         
         System.out.print("Entre com o seu voto (sim/nao) para esta decisao: ");
-        String votoMorador = scan.nextLine().toLowerCase();
+        String votoMorador = scan.nextLine();
+        
+//        votoMorador = votoMorador.toLowerCase();
+        
+        System.out.println(votoMorador);
         
         scan.nextLine();        
         

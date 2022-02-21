@@ -108,7 +108,7 @@ public class TelaTarefas {
         int idMorador;
         idMorador = scan.nextInt();
         
-        controller.efetuaAtribuicaoTarefa(idTarefa, idMorador); 
+        controller.efetuaAtribuicaoTarefa(idTarefa, idMorador);
         
     }
 

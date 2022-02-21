@@ -18,9 +18,9 @@ public class TelaInicial {
     }
     
     public void mostrar(){
-        int opcao;        
+        int opcao;
         TelaContas telaContas = new TelaContas();
-        //TelaTarefas telaTarefas = new TelaTarefas();
+        TelaTarefas telaTarefas = new TelaTarefas();
         TelaDecisoes telaDecisoes = new TelaDecisoes();
         
         opcao = mostrarMenu();
@@ -34,8 +34,8 @@ public class TelaInicial {
                     telaContas.mostrar();
                     break;
                 case 3:
-                    // aba tarefas   
-                    //telaTarefas.mostrar();
+                    // aba tarefas
+                    telaTarefas.mostrar();
                     break;
                 case 4:
                     // aba decisões

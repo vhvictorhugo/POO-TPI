@@ -11,7 +11,7 @@ public class Decisao {
     
     private int idDecisao, quantidadeVotosSim,quantidadeVotosNao;
     private String descricao;
-    private int isTomada;   // 0 pedendete, 1 para aceito, 2 para recusa,
+    private int isTomada;   // 0 pedendete, 1 para aceita, 2 para recusada
     
     public Decisao (int idDecisao, String descricao){
         this.idDecisao = idDecisao;
@@ -28,7 +28,7 @@ public class Decisao {
         if(isTomada == 1){
             return "Aceita";
         }if(isTomada == 2){
-            return "Recusado";
+            return "Recusada";
         }else{
             return "Pendente";
         }
@@ -38,10 +38,10 @@ public class Decisao {
     
     // Setters
     public void setQuantidadeVotosSim (int quantidadeVotosSim){
-        this.quantidadeVotosSim = quantidadeVotosSim + getQuantidadeVotosSim();
+        this.quantidadeVotosSim = quantidadeVotosSim;
     }
     public void setQuantidadeVotosNao (int quantidadeVotosNao){
-        this.quantidadeVotosNao = quantidadeVotosNao + getQuantidadeVotosNao();
+        this.quantidadeVotosNao = quantidadeVotosNao;
     }
     public void setIsTomada (int isTomada){
         this.isTomada = isTomada;
@@ -51,7 +51,9 @@ public class Decisao {
     public String toString(){
         return("ID: "+ this.getIdDecisao() + "\n" +
                 "Descricao: "+ this.getDescricao() + "\n" + 
-                "Status: "+ this.getIsTomada()+ "\n");
+                "Status: "+ this.getIsTomada()+ "\n" +
+                "+: "+ this.getQuantidadeVotosSim()+ "\n"+
+                "-: "+this.getQuantidadeVotosNao()+"\n");
     }
 
     

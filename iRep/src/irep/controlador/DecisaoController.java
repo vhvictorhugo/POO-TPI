@@ -47,8 +47,17 @@ public class DecisaoController {
 
     public void efetuaVoto(int idDecisao, int quantidadeVotosSim, int quantidadeVotosNao) {        
         List <Decisao> decisoes = decisoes  = decisaoDAO.listarDecisoes();
-        decisaoDAO.pesquisaDecisao(idDecisao).setQuantidadeVotosSim(quantidadeVotosSim);
-        decisaoDAO.pesquisaDecisao(idDecisao).setQuantidadeVotosNao(quantidadeVotosNao);
+        
+        Decisao decisao = decisaoDAO.pesquisaDecisao(idDecisao);
+        
+        int votosAtuaisPositivos = decisao.getQuantidadeVotosSim();
+        int votosAtuaisNegativos = decisao.getQuantidadeVotosNao();
+        
+        int votosNovosPositivos = votosAtuaisPositivos + quantidadeVotosSim;
+        int votosNovosNegativos = votosAtuaisNegativos + quantidadeVotosNao;
+        
+        decisao.setQuantidadeVotosSim(votosNovosPositivos);
+        decisao.setQuantidadeVotosNao(votosNovosNegativos);
     }
 
     public void calculaResultado(int idDecisao) {
