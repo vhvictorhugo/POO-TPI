@@ -92,15 +92,9 @@ O repositório conta com 2 branches (main e dev), favor verificar os commits de 
 
 • Terminar de converter o projeto para o padrão MVC - falta somente a classe Morador;
 
-• Verificar erros de projeto:
+• Verificar erros de projeto - tratamento de excessões
 
-​	• verificar erros do usuário;
-
-​		• criar contas, tarefas, etc com id iguais;
-
-​		• entrar com informações erradas/inexistentes para pesquisa (erro de leitura);
-
-​	• verificar autenticações
+• verificar autenticações
 
 ​		• quais usuários podem mudar o estado
 
