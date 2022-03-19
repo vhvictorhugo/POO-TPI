@@ -45,6 +45,7 @@ public class DecisaoController {
         return decisoesStr;
     }
 
+<<<<<<< Updated upstream
     public void efetuaVoto(boolean isVotoPositivo, int idDecisao) {
         decisoes  = decisaoDAO.listarDecisoes();
         int incrementaVoto;
@@ -62,6 +63,21 @@ public class DecisaoController {
              return;
             }
         }       
+=======
+    public void efetuaVoto(int idDecisao, int quantidadeVotosSim, int quantidadeVotosNao) {        
+        List <Decisao> decisoes = decisoes  = decisaoDAO.listarDecisoes();
+        
+        Decisao decisao = decisaoDAO.pesquisaDecisao(idDecisao);
+        System.out.print(decisao);
+        int votosAtuaisPositivos = decisao.getQuantidadeVotosSim();
+        int votosAtuaisNegativos = decisao.getQuantidadeVotosNao();
+        
+        int votosNovosPositivos = votosAtuaisPositivos + quantidadeVotosSim;
+        int votosNovosNegativos = votosAtuaisNegativos + quantidadeVotosNao;
+        
+        decisao.setQuantidadeVotosSim(votosNovosPositivos);
+        decisao.setQuantidadeVotosNao(votosNovosNegativos);
+>>>>>>> Stashed changes
     }
 
     public void calculaResultado(int idDecisao) {

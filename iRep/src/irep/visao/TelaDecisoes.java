@@ -100,14 +100,28 @@ public class TelaDecisoes {
         int idDecisao = scan.nextInt();
         
         System.out.print("Entre com o seu voto (sim/nao) para esta decisao: ");
+<<<<<<< Updated upstream
         scan.nextLine();
+=======
+        String votoMorador = scan.nextLine().toLowerCase();
+        
+        System.out.println(votoMorador);
+>>>>>>> Stashed changes
         
         String votoMorador = scan.nextLine().toLowerCase(); 
         
         if("sim".equals(votoMorador)){
+<<<<<<< Updated upstream
             controller.efetuaVoto(true, idDecisao);
         }else if("nao".equals(votoMorador)){
             controller.efetuaVoto(false, idDecisao);            
+=======
+             
+            controller.efetuaVoto(idDecisao, 1,0);
+        }else if("nao".equals(votoMorador)){
+             
+            controller.efetuaVoto(idDecisao, 0,1);            
+>>>>>>> Stashed changes
         }       
     }   
 

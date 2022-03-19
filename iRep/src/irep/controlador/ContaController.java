@@ -21,15 +21,17 @@ public class ContaController {
         this.contaDAO = new ContaDAO();
     }
     
-    public void addConta(int idConta, String nome, double valorConta, LocalDate vencimento){
+    public Conta addConta(int idConta, String nome, double valorConta, LocalDate vencimento){
         Conta c = new Conta(idConta, nome, valorConta, vencimento);
         
         Conta cVerificaExistente = contaDAO.pesquisaConta(idConta); // recebe o idAtual e verifica pelo id se há itens iguais
         
         if(cVerificaExistente != null){
             System.err.println("Conta com ID "+ idConta + " ja existente!");
+            return null;
         }else{
             contaDAO.addConta(c);
+            return c;
         }
         
     }
