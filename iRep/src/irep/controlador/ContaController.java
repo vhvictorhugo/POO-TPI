@@ -8,7 +8,7 @@
 package irep.controlador;
 
 import irep.modelo.entidade.Conta;
-import irep.modelo.entidade.excecao.ExcecaoContaExiste;
+import irep.modelo.entidade.excecao.ExcecaoIDExiste;
 import irep.modelo.entidade.excecao.ExcecaoContaPaga;
 import irep.modelo.persistencia.ContaDAO;
 import java.time.LocalDate;
@@ -23,14 +23,14 @@ public class ContaController {
         this.contaDAO = new ContaDAO();
     }
     
-    public Conta addConta(int idConta, String nome, double valorConta, LocalDate vencimento) throws ExcecaoContaExiste{
+    public Conta addConta(int idConta, String nome, double valorConta, LocalDate vencimento) throws ExcecaoIDExiste{
         Conta c = new Conta(idConta, nome, valorConta, vencimento);
         
         Conta cVerificaExistente = contaDAO.pesquisaConta(idConta); // recebe o idAtual e verifica pelo id se há itens iguais
         
 
         if(cVerificaExistente != null){
-            throw new ExcecaoContaExiste();
+            throw new ExcecaoIDExiste();
         }else{
             contaDAO.addConta(c);
             return c;
