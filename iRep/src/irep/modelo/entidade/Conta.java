@@ -51,6 +51,7 @@ public class Conta {
         this.setValorConta(valorConta);
         this.setVencimento(vencimento);        
         this.idConta = idConta;
+        this.isPaga = false;
     }
     
     @Override

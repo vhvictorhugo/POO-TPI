@@ -8,6 +8,7 @@
 package irep.visao;
 
 import irep.controlador.ContaController;
+import irep.modelo.entidade.excecao.ExcecaoContaPaga;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -38,7 +39,7 @@ public class TelaContas {
                     break;
                 case 3:
                     // pagar conta
-                    pagamentoConta();                    
+                    pagamentoConta();                                       
                     break;
                 default:
                     System.err.println("Opção inválida!");
@@ -109,7 +110,8 @@ public class TelaContas {
         int idConta;
         idConta = scan.nextInt();
         
-        controller.efetuaPagamentoConta(idConta); 
-        
+        try{
+            controller.efetuaPagamentoConta(idConta); 
+        }catch(ExcecaoContaPaga cp){ }    
     }
 }

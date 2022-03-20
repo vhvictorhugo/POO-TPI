@@ -8,6 +8,7 @@
 package irep.controlador;
 
 import irep.modelo.entidade.Conta;
+import irep.modelo.entidade.excecao.ExcecaoContaPaga;
 import irep.modelo.persistencia.ContaDAO;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,10 +49,14 @@ public class ContaController {
     
     // criar solucao para verificar se a conta ja esta paga
     // criar solucao para tratar id inexistente
-    public void efetuaPagamentoConta(int idConta){
+    public void efetuaPagamentoConta(int idConta) throws ExcecaoContaPaga{
         for (Conta c : contaDAO.listarContas()){
             if(c.getIdConta() == idConta){
-                c.setIsPaga(true);
+                if("Em Aberto".equals(c.getIsPaga())){
+                    c.setIsPaga(true);
+                }else{
+                    throw new ExcecaoContaPaga();
+                }
             }            
         }
     }

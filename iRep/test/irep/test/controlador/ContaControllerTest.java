@@ -2,8 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-package irep.teste.controlador;
-
+package irep.test.controlador;
 import irep.controlador.ContaController;
 import irep.modelo.entidade.Conta;
 import irep.modelo.entidade.excecao.ExcecaoContaPaga;
@@ -15,6 +14,10 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ *
+ * @author lucas
+ */
 public class ContaControllerTest {
     ContaController contaController;
 
@@ -78,7 +81,7 @@ public class ContaControllerTest {
     @Test
     // verifica se uma conta foi paga
     public void testPagamentoConta2(){
-        // teste que tenta pagar conta já paga
+        // teste que paga conta não paga
         Conta conta = initConta().get(0);
         // efetua pagamento conta da primeira posicao do array de contas
         // ou seja, a primeira conta inserida

@@ -23,6 +23,7 @@
      - [x] Cadastro de Contas (luz, água, internet, etc)
      - [x] Listar contas
      - [x] Efetua o pagamento da conta
+       - [ ] Hierarquia: somente veteranos pagam
      - [ ] Notificação para lembrar das contas (próxima da data de vencimento) (funcionalidade extra)
      
   2. Gerenciamento de **Tarefas da Casa**
@@ -32,15 +33,15 @@
        - [ ] Checklist (extra/interface) - para cada tarefa
      - [x] Atribui tarefa - cada morador terá uma determinada tarefa em uma determinada semana
        - [ ] Atribuição real (tarefa-morador)
+       - [ ] Acrescentar: somente veteranos atribuem
      - [x] Conclui tarefa
+       - [ ] Acrescentar: somente morador da própria tarefa pode efetuar 
      - [ ] Notificação para lembrar das tarefas (próximo ao fim da semana) 
   
   3. Gerenciamento de **Decisões**
   
      - [x] Cadastro de Decisões
      - [x] Lista Decisões
-       - [ ] Decisões tomadas
-       - [ ] Decisões pendentes
      - [x] Votação
        - [x] Contabilizar Voto - morador vota sim ou não para a decisão
        - [x] Resultado - contagem
@@ -48,8 +49,17 @@
      * Ex: Comprar um Freezer - compra **para a casa** com **alto custo**, que necessita de aprovação da **maioria** dos moradores
   
   5. **Moradores**
-     * **Usuários**
-     * Hierarquia - calouro e veterano (opcional) 
+     
+     - [ ] Cadastrar Morador - a partir de 0
+     
+       ID 0 é considerado como nulo no projeto
+     
+     - [ ] Listar Moradores
+     
+     - [ ] Exibir informações morador
+     
+     1. **Usuários**
+     2. Hierarquia - calouro e veterano (opcional) 
   
   
 
