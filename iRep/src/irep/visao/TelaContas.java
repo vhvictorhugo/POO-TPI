@@ -8,6 +8,7 @@
 package irep.visao;
 
 import irep.controlador.ContaController;
+import irep.modelo.entidade.excecao.ExcecaoContaExiste;
 import irep.modelo.entidade.excecao.ExcecaoContaPaga;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -83,8 +84,9 @@ public class TelaContas {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
         LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato); 
 
-        controller.addConta(idConta, nome, valorConta, dataVencimento);
-        
+        try{
+            controller.addConta(idConta, nome, valorConta, dataVencimento);
+        }catch(ExcecaoContaExiste ce){ }   
     }
     
     private void listarContas() {

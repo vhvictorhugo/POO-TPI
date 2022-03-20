@@ -6,6 +6,7 @@ package irep.teste.controlador;
 
 import irep.controlador.ContaController;
 import irep.modelo.entidade.Conta;
+import irep.modelo.entidade.excecao.ExcecaoContaExiste;
 import irep.modelo.entidade.excecao.ExcecaoContaPaga;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -49,13 +50,46 @@ public class ContaControllerTest {
     }
 
     @Test
+    // tenta adicionar conta não existente
+    public void testAddConta() {
+        
+        int idConta = 3;
+        String nome = "A";
+        double valorConta = 20.2;
+        String vencimentoLeitura = "10/10/2010";        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato);
+        
+        try{
+            initConta();
+            contaController.addConta(idConta, nome, valorConta, dataVencimento);
+        }catch(ExcecaoContaExiste ce){ }
+    }
+
+    @Test
+    // tenta adicionar conta já existente
+    public void testAddConta2() {
+        
+        int idConta = 1;
+        String nome = "A";
+        double valorConta = 20.2;
+        String vencimentoLeitura = "10/10/2010";        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato);
+        
+        try{
+            initConta();
+            contaController.addConta(idConta, nome, valorConta, dataVencimento);
+        }catch(ExcecaoContaExiste ce){ }
+    }    
+
+    @Test
     // verifica se as contas adicionadas foram realmente registradas
     public void testListarContas() {
         // array de string contendo as contas do banco de dados
         List<String> arrayString = contaController.listarContas();
         // array retornado pelo método initConta() contendo as contas inseridas
-        List<Conta> arrayContas = initConta();
-
+        List<Conta> arrayContas = initConta(); 
         // assert tamanhos dos arrays
         for (int index = 0; index < arrayString.size(); index++) {
             assertEquals(arrayString, arrayContas.get(index).toString()); 
