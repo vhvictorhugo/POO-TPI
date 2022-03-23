@@ -9,9 +9,6 @@ package irep.visao;
 
 import java.util.Scanner;
 
-import irep.modelo.entidade.excecao.ExcecaoContaPaga;
-
-
 public class TelaInicial {
     Scanner scan;
     
@@ -19,7 +16,7 @@ public class TelaInicial {
         scan = new Scanner(System.in);
     }
     
-    public void mostrar() throws ExcecaoContaPaga{
+    public void mostrar(){
         int opcao;
         TelaContas telaContas = new TelaContas();
         TelaTarefas telaTarefas = new TelaTarefas();

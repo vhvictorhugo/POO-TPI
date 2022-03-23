@@ -8,7 +8,7 @@
 package irep.visao;
 
 import irep.controlador.ContaController;
-import irep.modelo.entidade.excecao.ExcecaoContaExiste;
+import irep.modelo.entidade.excecao.ExcecaoIDExiste;
 import irep.modelo.entidade.excecao.ExcecaoContaPaga;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,7 +20,7 @@ public class TelaContas {
     ContaController controller;
     
     public TelaContas (){        
-        scan = new Scanner(System.in);   
+        scan = new Scanner(System.in);
         controller = new ContaController();
     }
     
@@ -65,28 +65,26 @@ public class TelaContas {
     
     private void cadastroConta(){
         System.out.println("-------------- CADASTRO DE CONTAS --------------");
-        
+                
         System.out.print("Entre com o ID da conta: ");
-        scan.nextLine();
         int idConta = scan.nextInt();
         
+        
         System.out.print("Entre com o nome: ");
-        scan.nextLine();
-        String nome = scan.nextLine();        
+        String nome = scan.next();        
         
         System.out.print("Entre com o valor: ");
-        double valorConta = scan.nextDouble();        
+        double valorConta = scan.nextDouble();  
         
-        scan.nextLine();
         System.out.print("Entre com a data de vencimento (dd/MM/yyyy): ");
-        String vencimentoLeitura = scan.nextLine();
+        String vencimentoLeitura = scan.next();
         // converte data do tipo 'String' em data do tipo 'LocalDate'c
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
         LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato); 
 
         try{
             controller.addConta(idConta, nome, valorConta, dataVencimento);
-        }catch(ExcecaoContaExiste ce){ }   
+        }catch(ExcecaoIDExiste ce){ }   
     }
     
     private void listarContas() {

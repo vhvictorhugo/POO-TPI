@@ -6,7 +6,7 @@ package irep.teste.controlador;
 
 import irep.controlador.ContaController;
 import irep.modelo.entidade.Conta;
-import irep.modelo.entidade.excecao.ExcecaoContaExiste;
+import irep.modelo.entidade.excecao.ExcecaoIDExiste;
 import irep.modelo.entidade.excecao.ExcecaoContaPaga;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -63,7 +63,7 @@ public class ContaControllerTest {
         try{
             initConta();
             contaController.addConta(idConta, nome, valorConta, dataVencimento);
-        }catch(ExcecaoContaExiste ce){ }
+        }catch(ExcecaoIDExiste ce){ }
     }
 
     @Test
@@ -80,7 +80,7 @@ public class ContaControllerTest {
         try{
             initConta();
             contaController.addConta(idConta, nome, valorConta, dataVencimento);
-        }catch(ExcecaoContaExiste ce){ }
+        }catch(ExcecaoIDExiste ce){ }
     }    
 
     @Test
@@ -119,7 +119,9 @@ public class ContaControllerTest {
         try{
             contaController.efetuaPagamentoConta(conta.getIdConta());
             contaController.efetuaPagamentoConta(conta.getIdConta());
+            
+        }catch(ExcecaoContaPaga cp){
             assertEquals(conta.getIsPaga(),"Paga");
-        }catch(ExcecaoContaPaga cp){}
+        }
     }
 }
