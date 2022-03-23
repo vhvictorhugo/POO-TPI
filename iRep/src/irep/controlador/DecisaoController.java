@@ -8,6 +8,7 @@
 package irep.controlador;
 
 import irep.modelo.entidade.Decisao;
+import irep.modelo.entidade.excecao.ExcecaoIDExiste;
 import irep.modelo.persistencia.DecisaoDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,19 +19,18 @@ public class DecisaoController {
    
     public DecisaoController(){
         decisaoDAO = new DecisaoDAO();
-        decisoes = new ArrayList();
     }
      
-    public void addDecisao(int idDecisao, String descricao) {
+    public Decisao addDecisao(int idDecisao, String descricao) throws ExcecaoIDExiste{
         Decisao d = new Decisao(idDecisao, descricao);
         
         Decisao dVerificaExistente = decisaoDAO.pesquisaDecisao(idDecisao);
         if(dVerificaExistente != null){
-            System.err.println("Decisao com ID "+ idDecisao + " ja existente!");
-            return;
-        }
-            
-        decisaoDAO.addDecisao(d);
+            throw new ExcecaoIDExiste();
+        }else{
+            decisaoDAO.addDecisao(d);
+            return d;
+        }           
     }
 
     public List<String> listarDecisoes() {
@@ -40,8 +40,6 @@ public class DecisaoController {
         for (Decisao d : decisoes){
             decisoesStr.add(d.toString());
         }
-        
-        
         return decisoesStr;
     }
 

@@ -8,8 +8,6 @@
 package irep.visao;
 
 import irep.controlador.TarefaController;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import irep.modelo.entidade.excecao.ExcecaoTarefaNaoExiste;

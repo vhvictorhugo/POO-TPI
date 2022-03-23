@@ -14,6 +14,8 @@
 
 - O projeto **iRep** tem como principal **objetivo** construir do zero um sistema utilizando a linguagem de programação **Java** para **moradores de uma república** gerenciarem diversas situações cotidianas de uma república para facilitar a organização geral da casa, facilitando a boa convivência. 
 
+- Inicialização das classes: todas devem possuir ID diferente de 0
+
   
 
 - O projeto conta com as seguintes funcionalidades:
@@ -50,7 +52,7 @@
   
   5. **Moradores**
      
-     - [ ] Cadastrar Morador - a partir de 0
+     - [ ] Cadastrar Morador
      
        ID 0 é considerado como nulo no projeto
      

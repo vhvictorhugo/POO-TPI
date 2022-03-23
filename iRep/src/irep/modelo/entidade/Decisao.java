@@ -55,8 +55,4 @@ public class Decisao {
                 "+: "+ this.getQuantidadeVotosSim()+ "\n"+
                 "-: "+this.getQuantidadeVotosNao()+"\n");
     }
-
-    
-    
-    
 }

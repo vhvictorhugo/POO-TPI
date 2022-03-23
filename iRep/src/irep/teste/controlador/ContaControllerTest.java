@@ -63,8 +63,7 @@ public class ContaControllerTest {
         try {
             initConta();
             contaController.addConta(idConta, nome, valorConta, dataVencimento);
-        } catch (ExcecaoIDExiste ce) {
-        }
+        }catch(ExcecaoIDExiste ce){ }
     }
 
     @Test
@@ -81,8 +80,7 @@ public class ContaControllerTest {
         try {
             initConta();
             contaController.addConta(idConta, nome, valorConta, dataVencimento);
-        } catch (ExcecaoIDExiste ce) {
-        }
+        }catch(ExcecaoIDExiste ce){ }
     }
 
     @Test
@@ -122,8 +120,8 @@ public class ContaControllerTest {
         try {
             contaController.efetuaPagamentoConta(conta.getIdConta());
             contaController.efetuaPagamentoConta(conta.getIdConta());
-            assertEquals(conta.getIsPaga(), "Paga");
-        } catch (ExcecaoContaPaga cp) {
+        }catch(ExcecaoContaPaga cp){
+            assertEquals(conta.getIsPaga(),"Paga");
         }
     }
 }

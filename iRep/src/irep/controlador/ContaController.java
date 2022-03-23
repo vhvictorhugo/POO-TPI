@@ -22,20 +22,19 @@ public class ContaController {
     public ContaController() {
         this.contaDAO = new ContaDAO();
     }
+    
+    public Conta addConta(int idConta, String nome, double valorConta, LocalDate vencimento) throws ExcecaoIDExiste{
 
-    public Conta addConta(int idConta, String nome, double valorConta, LocalDate vencimento) throws ExcecaoIDExiste {
         Conta c = new Conta(idConta, nome, valorConta, vencimento);
-
+      
         Conta cVerificaExistente = contaDAO.pesquisaConta(idConta); // recebe o idAtual e verifica pelo id se há itens
                                                                     // iguais
-
-        if (cVerificaExistente != null) {
+        if(cVerificaExistente != null){
             throw new ExcecaoIDExiste();
-        } else {
-            contaDAO.addConta(c);
+        }else{        
+          contaDAO.addConta(c);
             return c;
         }
-
     }
 
     public List<String> listarContas() {
