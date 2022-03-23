@@ -10,46 +10,47 @@ package irep.visao;
 import irep.controlador.TarefaController;
 import java.util.List;
 import java.util.Scanner;
+import irep.modelo.entidade.excecao.ExcecaoTarefaNaoExiste;
 
 public class TelaTarefas {
     Scanner scan;
     TarefaController controller;
-    
-    public TelaTarefas (){
-        scan = new Scanner(System.in);   
+
+    public TelaTarefas() {
+        scan = new Scanner(System.in);
         controller = new TarefaController();
     }
-    
-    public void mostrar(){
+
+    public void mostrar() {
         int opcao;
-        
+
         opcao = mostrarMenu();
-        while (opcao != 5){            
-            switch(opcao){
+        while (opcao != 5) {
+            switch (opcao) {
                 case 1:
                     // Cadastrar tarefa
                     cadastroTarefa();
                     break;
                 case 2:
                     // listar tarefas
-                    listarTarefas();                    
+                    listarTarefas();
                     break;
                 case 3:
                     // atribuir tarefa a morador
-                    atribuiTarefa();                    
+                    atribuiTarefa();
                     break;
                 case 4:
                     // set conclusao para tarefa
-                    concluiTarefa();                    
-                    break;                  
+                    concluiTarefa();
+                    break;
                 default:
                     System.err.println("Opção inválida!");
-            }            
+            }
             opcao = mostrarMenu();
         }
     }
-    
-    private int mostrarMenu(){
+
+    private int mostrarMenu() {
         int opcao;
         System.out.println("-------------- TAREFAS --------------");
         System.out.println("1- Cadastrar Tarefa");
@@ -58,66 +59,65 @@ public class TelaTarefas {
         System.out.println("4- Concluir uma Tarefa");
         System.out.println("5- Sair");
         System.out.print("\nDigite um numero: ");
-        
+
         opcao = scan.nextInt();
-        
-        return opcao;        
+
+        return opcao;
     }
-    
+
     private void cadastroTarefa() {
         System.out.println("-------------- CADASTRO DE TAREFAS --------------");
-        
+
         System.out.print("Entre com o ID da tarefa: ");
         scan.nextLine();
         int idTarefa = scan.nextInt();
-        
+
         System.out.print("Entre com o nome: ");
         scan.nextLine();
-        String nome = scan.nextLine();       
-        
+        String nome = scan.nextLine();
+
         controller.addTarefa(idTarefa, nome);
     }
-    
-       private void listarTarefas() {
-       System.out.println("-------------- LISTAGEM DE TAREFAS --------------");
-       List <String> tarefas = controller.listarTarefas();
-       
-       if(tarefas.size() < 0){
-           System.err.println("Sem tarefas cadastradas!");
-           return;
-       }
-       
-       System.out.println("Total de tarefas: " + tarefas.size());
-       for (String t : tarefas){
-           System.out.println(t);
-       }       
+
+    private void listarTarefas() {
+        System.out.println("-------------- LISTAGEM DE TAREFAS --------------");
+        List<String> tarefas = controller.listarTarefas();
+
+        if (tarefas.size() < 0) {
+            throw new ExcecaoTarefaNaoExiste();
+        }
+
+        System.out.println("Total de tarefas: " + tarefas.size());
+        for (String t : tarefas) {
+            System.out.println(t);
+        }
     }
-    
-    private void atribuiTarefa(){
+
+    private void atribuiTarefa() {
         System.out.println("-------------- ATRIBUIÇÃO DE TAREFAS --------------");
-        
+
         System.out.print("Digite o ID da tarefa: ");
-        
+
         int idTarefa;
         idTarefa = scan.nextInt();
-        
+
         System.out.print("Digite o ID do morador a ser atribuido: ");
-        
+
         int idMorador;
         idMorador = scan.nextInt();
-        
+
         controller.efetuaAtribuicaoTarefa(idTarefa, idMorador);
-        
+
     }
 
     private void concluiTarefa() {
         System.out.println("-------------- FECHAMENTO DE TAREFAS --------------");
-        
+
         System.out.print("Digite o ID da tarefa: ");
-        
+
         int idTarefa;
         idTarefa = scan.nextInt();
-        
+
         controller.concluiTarefa(idTarefa);
     }
 }
