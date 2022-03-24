@@ -27,9 +27,9 @@
      - [x] Listar contas
        - [ ] Excecao para nao listar se array = vazio
      - [x] Efetua o pagamento da conta
+       - [ ] Mostrar contas quando for pagar
        - [ ] Excecao para ID inexistente
        - [ ] Hierarquia: somente veteranos pagam
-  
   2. Gerenciamento de **Tarefas da Casa**
   
      - [x] Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
@@ -44,7 +44,6 @@
        - [ ] Excecao se idtarefa nao existe
        - [ ] Excecao se tarefa ja esta concluida
        - [ ] Acrescentar: somente morador da própria tarefa pode efetuar 
-  
   3. Gerenciamento de **Decisões**
   
      - [x] Cadastro de Decisões
@@ -68,11 +67,12 @@
      - [x] Cadastrar Morador
        - [ ] Hierarquia - calouro e veterano (Herança)
        - [ ] Colocar enum para curso
-       
      - [x] Listar Moradores
        - [ ] Excecao para nao listar se array = vazio
-  
      - [x] Exibir informações morador
+     - [ ] Listar tarefas por morador
+       - [ ] Excecao morador nao existe
+       - [ ] Excecao nao existem tarefas
   
   5. **Possíveis Futuras Implementações**
   

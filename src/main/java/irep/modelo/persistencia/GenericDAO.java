@@ -11,7 +11,7 @@ import java.util.List;
 
 
 // GenericDAO para quaisquer outros DAO's
-public interface GenericDAO<T> {    // T é a entidade genérica
+public interface GenericDAO<T extends Object> {    // T é a entidade genérica
     public T add(T o);
     public T pesquisa(int ID);
     public T remove(int ID);    

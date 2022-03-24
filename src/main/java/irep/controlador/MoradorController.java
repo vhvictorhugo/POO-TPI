@@ -12,14 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import irep.modelo.entidade.Morador;
+import irep.modelo.entidade.Tarefa;
 import irep.modelo.excecao.ExcecaoIDExiste;
 import irep.modelo.persistencia.MoradorDAO;
+import irep.modelo.persistencia.TarefaDAO;
 
 public class MoradorController {
     MoradorDAO moradorDAO;
+    TarefaDAO tarefaDAO;
 
-    public MoradorController(MoradorDAO moradorDAO) {
+    public MoradorController(MoradorDAO moradorDAO, TarefaDAO tarefaDAO) {
         this.moradorDAO = moradorDAO;
+        this.tarefaDAO = tarefaDAO;
     }
 
     public void addMorador(int idMorador, String nome, String apelido, String curso, LocalDate dataNascimento) {
@@ -46,6 +50,18 @@ public class MoradorController {
     public String exibirMoradorPorID(int idMorador) {
         Morador morador = moradorDAO.pesquisa(idMorador);
         return (morador.toString());
+    }
+
+    public List<String> listarTarefasAtribuidas(int idMorador) {
+        List <Tarefa> tarefas = tarefaDAO.listar();
+        List <String> tarefasStr = new ArrayList<>();
+
+        for (Tarefa f : tarefas){
+            if(f.getIdMorador() == idMorador){
+                tarefasStr.add(f.toString());
+            }
+        }
+        return tarefasStr;
     }
     
 }

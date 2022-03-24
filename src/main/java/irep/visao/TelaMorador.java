@@ -15,21 +15,22 @@ import java.util.Scanner;
 import irep.controlador.MoradorController;
 import irep.modelo.excecao.ExcecaoIDExiste;
 import irep.modelo.persistencia.MoradorDAO;
+import irep.modelo.persistencia.TarefaDAO;
 
 public class TelaMorador {
     Scanner scan;
     MoradorController controller;
 
-    public TelaMorador (MoradorDAO moradorDAO){
+    public TelaMorador (MoradorDAO moradorDAO, TarefaDAO tarefaDAO){
         scan = new Scanner(System.in);
-        controller = new MoradorController(moradorDAO);
+        controller = new MoradorController(moradorDAO, tarefaDAO);
     }
 
     public void mostrar(){
         int opcao;
         
         opcao = mostrarMenu();
-        while (opcao != 4){
+        while (opcao != 5){
             switch(opcao){
                 case 1:
                     // Cadastrar morador
@@ -42,13 +43,17 @@ public class TelaMorador {
                 case 3:
                     // exibir por id
                     exibirPorID();                    
-                    break;                  
+                    break;
+                case 4:
+                    // exibir por id
+                    exibirTarefasAtribuidas();                    
+                    break;
                 default:
                     System.err.println("Opção inválida!");
             }            
             opcao = mostrarMenu();
         }
-    }
+    }    
 
     private int mostrarMenu(){
         int opcao;
@@ -56,7 +61,8 @@ public class TelaMorador {
         System.out.println("1- Cadastrar Morador");
         System.out.println("2- Listar Moradores");
         System.out.println("3- Exibir informações por ID");
-        System.out.println("4- Sair");
+        System.out.println("4- Exibir Tarefas Atribuídas");
+        System.out.println("5- Sair");
         System.out.print("\nDigite um numero: ");
         
         opcao = scan.nextInt();
@@ -114,5 +120,27 @@ public class TelaMorador {
         idMorador = scan.nextInt();
 
         System.out.println(controller.exibirMoradorPorID(idMorador));
+    }
+
+    private void exibirTarefasAtribuidas() {
+        System.out.println("-------------- TAREFAS ATRIBUÍDAS --------------");
+        List <String> tarefas;
+
+        System.out.print("Digite o ID do morador: ");
+        
+        int idMorador;
+        idMorador = scan.nextInt();
+
+        tarefas = controller.listarTarefasAtribuidas(idMorador);
+        
+        if(tarefas.size() < 0){
+            System.err.println("Sem tarefas atribuidas!");
+            return;
+        }
+        
+        System.out.println("Total de tarefas atribuidas: " + tarefas.size());
+        for (String t : tarefas){
+            System.out.println(t);
+        }
     }
 }
