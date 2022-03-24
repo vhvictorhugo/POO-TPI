@@ -12,27 +12,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TarefaDAO {
+public class TarefaDAO implements GenericDAO<Tarefa>{
     private List <Tarefa> tarefas = new ArrayList<>();
     
     public TarefaDAO (){
         this.tarefas = new ArrayList<>();
     }
-    
-    public void addTarefa (Tarefa t){
+
+    @Override
+    public Tarefa add(Tarefa t) {
         tarefas.add(t);
+        return t;
     }
-    
-    public List<Tarefa> listarTarefas(){
-        return tarefas;
-    }
-    
-    public Tarefa pesquisaTarefa (int idTarefa){
+
+    @Override
+    public Tarefa pesquisa(int ID) {
         for (Tarefa t : tarefas){
-            if(t.getIdTarefa() == idTarefa){
+            if(t.getIdTarefa() == ID){
                 return t;
             }
         }        
         return null;
+    }
+
+    @Override
+    public Tarefa remove(int ID) {
+        Tarefa tarefa = pesquisa(ID);
+        if(tarefa != null){    // se a decisao existe
+            for (Tarefa t : tarefas){ // recupera o index da decisao na lista de decisaos
+                if(t.getIdTarefa() == ID){
+                    tarefas.remove(t);
+                    return t;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Tarefa> listar() {
+        return tarefas;
     }    
 }

@@ -117,7 +117,7 @@ public class TelaTarefas {
         catch(ExcecaoTarefaJaAtribuida tja){}   
     }
 
-    private void concluiTarefa() {
+    private void concluiTarefa(){
         System.out.println("-------------- FECHAMENTO DE TAREFAS --------------");
         
         System.out.print("Digite o ID da tarefa: ");

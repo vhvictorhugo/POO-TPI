@@ -7,6 +7,34 @@
 
 package irep.modelo.persistencia;
 
-public class MoradorDAO {
+import java.util.List;
+
+import irep.modelo.entidade.Morador;
+
+public class MoradorDAO implements GenericDAO<Morador>{
+
+    @Override
+    public Morador add(Morador m) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Morador pesquisa(int ID) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Morador remove(int ID) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Morador> listar() {
+        // TODO Auto-generated method stub
+        return null;
+    }
     
 }

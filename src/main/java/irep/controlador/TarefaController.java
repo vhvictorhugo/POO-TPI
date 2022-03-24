@@ -30,18 +30,18 @@ public class TarefaController {
     public Tarefa addTarefa(int idTarefa, String nome) throws ExcecaoIDExiste{
         Tarefa t = new Tarefa(idTarefa, nome);
 
-        Tarefa tVerificaExistente = tarefaDAO.pesquisaTarefa(idTarefa);
+        Tarefa tVerificaExistente = tarefaDAO.pesquisa(idTarefa);
         if (tVerificaExistente != null) {
             throw new ExcecaoIDExiste();
         } else {
-            tarefaDAO.addTarefa(t);
+            tarefaDAO.add(t);
             return t;
         }
     }
 
     public List<String> listarTarefas() {
         List<String> tarefasStr = new ArrayList<>();
-        List<Tarefa> tarefas = tarefaDAO.listarTarefas();
+        List<Tarefa> tarefas = tarefaDAO.listar();
 
         for (Tarefa t : tarefas) {
             tarefasStr.add(t.toString());
@@ -53,8 +53,8 @@ public class TarefaController {
 
     public void efetuaAtribuicaoTarefa(int idTarefa, int idMorador) 
             throws ExcecaoIDNaoExiste, ExcecaoTarefaJaAtribuida{
-        Tarefa tarefa = tarefaDAO.pesquisaTarefa(idTarefa);
-        Conta morador = contaDAO.pesquisaConta(idMorador);
+        Tarefa tarefa = tarefaDAO.pesquisa(idTarefa);
+        Conta morador = contaDAO.pesquisa(idMorador);
 
         // verifica existencia da tarefa
         if(tarefa == null){
@@ -67,11 +67,11 @@ public class TarefaController {
         if(tarefa.getIdMorador() != 0){
             throw new ExcecaoTarefaJaAtribuida();
         }
-        tarefaDAO.pesquisaTarefa(idTarefa).setIdMorador(idMorador);
+        tarefaDAO.pesquisa(idTarefa).setIdMorador(idMorador);
     }
 
     public void concluiTarefa(int idTarefa) {
-        for (Tarefa t : tarefaDAO.listarTarefas()) {
+        for (Tarefa t : tarefaDAO.listar()) {
             if (t.getIdTarefa() == idTarefa) {
                 t.setIsFeito(true);
             }

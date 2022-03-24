@@ -73,12 +73,11 @@ public class TelaDecisoes {
         
         try{
             System.out.print("Entre com o ID da decisao: ");
-            scan.nextLine();
             int idDecisao = scan.nextInt();
 
             System.out.print("Entre com a descricao: ");
             scan.nextLine();
-            String descricao = scan.nextLine();
+            String descricao = scan.next();
 
             controller.addDecisao(idDecisao, descricao);
         }catch (InputMismatchException e){

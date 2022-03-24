@@ -26,12 +26,14 @@ public class TelaInicial {
         TelaContas telaContas = new TelaContas(contaDAO);
         TelaTarefas telaTarefas = new TelaTarefas(tarefaDAO, contaDAO);
         TelaDecisoes telaDecisoes = new TelaDecisoes(decisaoDAO);
+        TelaMorador telaMorador = new TelaMorador(moradorDAO);
         
         opcao = mostrarMenu();
         while (opcao != 5){            
             switch(opcao){
                 case 1:
                     // morador visualiza suas informações
+                    telaMorador.mostrar();
                     break;
                 case 2:
                     // aba contas
@@ -56,7 +58,7 @@ public class TelaInicial {
     private int mostrarMenu(){
         int opcao;
         System.out.println("-------------- iRep --------------");
-        System.out.println("1- Visualizar Perfil");
+        System.out.println("1- Morador");
         System.out.println("2- Contas");
         System.out.println("3- Tarefas");
         System.out.println("4- Decisões");

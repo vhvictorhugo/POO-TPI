@@ -24,17 +24,17 @@ public class DecisaoController {
     public Decisao addDecisao(int idDecisao, String descricao) throws ExcecaoIDExiste{
         Decisao d = new Decisao(idDecisao, descricao);
         
-        Decisao dVerificaExistente = decisaoDAO.pesquisaDecisao(idDecisao);
+        Decisao dVerificaExistente = decisaoDAO.pesquisa(idDecisao);
         if(dVerificaExistente != null){
             throw new ExcecaoIDExiste();
         }else{
-            decisaoDAO.addDecisao(d);
+            decisaoDAO.add(d);
             return d;
         }           
     }
 
     public List<String> listarDecisoes() {
-        decisoes  = decisaoDAO.listarDecisoes();
+        decisoes  = decisaoDAO.listar();
         List <String> decisoesStr = new ArrayList<>();
         
         for (Decisao d : decisoes){
@@ -44,7 +44,7 @@ public class DecisaoController {
     }
 
     public void efetuaVoto(boolean isVotoPositivo, int idDecisao) {
-        decisoes  = decisaoDAO.listarDecisoes();
+        decisoes  = decisaoDAO.listar();
         int incrementaVoto;
         for(Decisao d : decisoes){
             if(d.getIdDecisao() == idDecisao){
@@ -63,7 +63,7 @@ public class DecisaoController {
     }
 
     public void calculaResultado(int idDecisao) {
-        decisoes  = decisaoDAO.listarDecisoes();
+        decisoes  = decisaoDAO.listar();
         for(Decisao d : decisoes){
             if((d.getIdDecisao() == idDecisao)){
                 if(d.getQuantidadeVotosSim() > d.getQuantidadeVotosNao()){
