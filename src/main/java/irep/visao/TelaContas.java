@@ -16,10 +16,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
 
 public class TelaContas {
     Scanner scan;
     ContaController controller;
+    private static final Logger LOGGER = Logger.getLogger("irep");
     
     public TelaContas (ContaDAO contaDAO){        
         this.scan = new Scanner(System.in);
@@ -66,6 +68,7 @@ public class TelaContas {
     }
     
     private void cadastroConta(){
+        LOGGER.info("INICIADO: Cadastro de conta");
         System.out.println("-------------- CADASTRO DE CONTAS --------------");
         System.out.print("Entre com o ID da conta: ");
         int idConta = scan.nextInt();        
@@ -84,10 +87,14 @@ public class TelaContas {
 
         try{
             controller.addConta(idConta, nome, valorConta, dataVencimento);
-        }catch(ExcecaoIDExiste ce){ }   
+            LOGGER.debug("CADASTRO: Conta");
+        }catch(ExcecaoIDExiste ce){
+            LOGGER.error("Este ID já existe para Conta!");
+        }   
     }
     
     private void listarContas() {
+        LOGGER.info("INICIADO: Listagem  de contas");
         System.out.println("-------------- LISTAGEM DE CONTAS --------------");
         try{
         List<String> contas = controller.listarContas();
@@ -95,10 +102,14 @@ public class TelaContas {
             for (String c : contas){
                 System.out.println(c);
             }
-        }catch(ExcecaoNadaParaListar npl){}        
+            LOGGER.debug("LISTAR: Morador");
+        }catch(ExcecaoNadaParaListar npl){
+            LOGGER.error("Não há contas para listar!");
+        }
     }
     
     private void pagamentoConta(){
+        LOGGER.info("INICIADO: Pagamento de contas");
         System.out.println("-------------- PAGAMENTO DE CONTAS --------------");
         
         System.out.println("Contas a pagar:");
@@ -115,9 +126,13 @@ public class TelaContas {
             
             try{
                 controller.efetuaPagamentoConta(idConta); 
+                LOGGER.debug("EFETUA PAGAMENTO: Conta");
             }catch(ExcecaoContaPaga cp){ }
-            catch(ExcecaoIDNaoExiste ine){ }
-        }catch(ExcecaoNadaParaListar npl){}
-            
+            catch(ExcecaoIDNaoExiste ine){
+                LOGGER.error("Não há este ID para Conta!");
+             }
+        }catch(ExcecaoNadaParaListar npl){
+            LOGGER.error("Não há contas em aberto!");
+        }            
     }
 }

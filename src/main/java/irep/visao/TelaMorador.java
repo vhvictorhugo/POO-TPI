@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
-
+import org.apache.log4j.Logger;
 import irep.controlador.MoradorController;
 import irep.modelo.excecao.ExcecaoIDExiste;
 import irep.modelo.excecao.ExcecaoIDNaoExiste;
@@ -23,6 +23,7 @@ import irep.modelo.persistencia.TarefaDAO;
 public class TelaMorador {
     Scanner scan;
     MoradorController controller;
+    private static final Logger LOGGER = Logger.getLogger("irep");
 
     public TelaMorador (MoradorDAO moradorDAO, TarefaDAO tarefaDAO){
         scan = new Scanner(System.in);
@@ -74,6 +75,7 @@ public class TelaMorador {
     }
     // String nome, String apelido, String curso, LocalDate dataNascimento
     private void cadastroMorador() {
+        LOGGER.info("INICIADO: Cadastro de morador");
         System.out.println("-------------- CADASTRO DE MORADORES --------------");
         System.out.print("Entre com o ID do morador: ");
         int idMorador = scan.nextInt();
@@ -95,30 +97,33 @@ public class TelaMorador {
 
         try{
             controller.addMorador(idMorador, nome, apelido, curso, dataNascimento);
-        }catch(ExcecaoIDExiste ce){ }
+            LOGGER.debug("CADASTRO: Morador");
+        }catch(ExcecaoIDExiste ce){
+            LOGGER.error("Este ID já existe para Morador!");
+         }
         
     }
     
     private void listarMoradores() {
-       System.out.println("-------------- LISTAGEM DE MORADORES --------------");
-       
+        LOGGER.info("INICIADO: Listagem  de moradores");
+        System.out.println("-------------- LISTAGEM DE MORADORES --------------");
+        
         try{
             List <String> moradores = controller.listarMoradores();
-        
-            if(moradores.size() < 0){
-                System.err.println("Sem moradores cadastrados!");
-                return;
-            }
             
             System.out.println("Total de moradores: " + moradores.size());
             for (String m : moradores){
                 System.out.println(m);
             }
-        }catch(ExcecaoNadaParaListar npl) { }
+            LOGGER.debug("LISTAR: Morador");
+        }catch(ExcecaoNadaParaListar npl) {
+            LOGGER.error("Não há moradores para listar!");
+        }
              
     }
 
     private void exibirPorID(){
+        LOGGER.info("INICIADO: Exibir informações do morador");
         System.out.println("-------------- INFORMAÇÕES DO MORADOR --------------");
         
         System.out.print("Digite o ID do morador: ");
@@ -127,10 +132,14 @@ public class TelaMorador {
         idMorador = scan.nextInt();
         try{
             System.out.println(controller.exibirMoradorPorID(idMorador));
-        }catch(ExcecaoIDNaoExiste ine){ }
+            LOGGER.debug("EXIBIR POR ID: Morador");
+        }catch(ExcecaoIDNaoExiste ine){
+            LOGGER.error("Não há este ID para Morador!");
+        }
     }
 
     private void exibirTarefasAtribuidas() {
+        LOGGER.info("INICIADO: Exibir tarefas do morador");
         System.out.println("-------------- TAREFAS ATRIBUÍDAS --------------");
         
         List <String> tarefas;
@@ -145,9 +154,14 @@ public class TelaMorador {
             System.out.println("Total de tarefas: " + tarefas.size());
             for (String t : tarefas){
                 System.out.println(t);
+            LOGGER.debug("EXIBIR TAREFAS ATRIBUIDAS: Morador");
             }
-        }catch(ExcecaoNadaParaListar npl) { }
-        catch(ExcecaoIDNaoExiste ine) { }
-        catch(ExcecaoMoradorNaoPossuiTarefas mnpt) { }
+        }catch(ExcecaoNadaParaListar npl) {
+            LOGGER.error("Não há tarefas cadastradas!");
+        }
+        catch(ExcecaoIDNaoExiste ine) {
+            LOGGER.error("Não há este ID para Morador!");
+        }
+        catch(ExcecaoMoradorNaoPossuiTarefas mnpt) {}
     }
 }
