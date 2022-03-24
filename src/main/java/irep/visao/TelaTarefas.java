@@ -9,10 +9,13 @@ package irep.visao;
 
 import irep.controlador.TarefaController;
 import irep.modelo.excecao.ExcecaoIDNaoExiste;
+import irep.modelo.excecao.ExcecaoNadaParaListar;
 import irep.modelo.excecao.ExcecaoTarefaJaAtribuida;
+import irep.modelo.excecao.ExcecaoTarefaNaoAtribuida;
 import irep.modelo.persistencia.MoradorDAO;
 import irep.modelo.persistencia.TarefaDAO;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,7 +44,7 @@ public class TelaTarefas {
                     break;
                 case 3:
                     // atribuir tarefa a morador
-                    atribuiTarefa();                    
+                    atribuiTarefa();
                     break;
                 case 4:
                     // set conclusao para tarefa
@@ -72,30 +75,32 @@ public class TelaTarefas {
     private void cadastroTarefa() {
         System.out.println("-------------- CADASTRO DE TAREFAS --------------");
         
-        System.out.print("Entre com o ID da tarefa: ");
-        scan.nextLine();
-        int idTarefa = scan.nextInt();
-        
-        System.out.print("Entre com o nome: ");
-        scan.nextLine();
-        String nome = scan.nextLine();       
-        
-        controller.addTarefa(idTarefa, nome);
+        try{
+            System.out.print("Entre com o ID da tarefa: ");
+            scan.nextLine();
+            int idTarefa = scan.nextInt();
+            
+            System.out.print("Entre com o nome: ");
+            scan.nextLine();
+            String nome = scan.nextLine();       
+            
+            controller.addTarefa(idTarefa, nome);
+        }catch (InputMismatchException e){
+            System.err.println("Insira valores inteiros, por favor!");
+            scan.nextLine(); //descarta a entrada errada do usuário
+        }        
     }
     
-       private void listarTarefas() {
+    private void listarTarefas() {
        System.out.println("-------------- LISTAGEM DE TAREFAS --------------");
-       List <String> tarefas = controller.listarTarefas();
-       
-       if(tarefas.size() < 0){
-           System.err.println("Sem tarefas cadastradas!");
-           return;
-       }
-       
-       System.out.println("Total de tarefas: " + tarefas.size());
-       for (String t : tarefas){
-           System.out.println(t);
-       }       
+       try{
+            List <String> tarefas = controller.listarTarefas();
+            
+            System.out.println("Total de tarefas: " + tarefas.size());
+            for (String t : tarefas){
+                System.out.println(t);
+            }
+        }catch(ExcecaoNadaParaListar npl){}  
     }
     
     private void atribuiTarefa(){
@@ -119,12 +124,15 @@ public class TelaTarefas {
 
     private void concluiTarefa(){
         System.out.println("-------------- FECHAMENTO DE TAREFAS --------------");
-        
-        System.out.print("Digite o ID da tarefa: ");
+        try{
+            System.out.print("Digite o ID da tarefa: ");
         
         int idTarefa;
         idTarefa = scan.nextInt();
         
         controller.concluiTarefa(idTarefa);
+        }catch(ExcecaoIDNaoExiste ine){ }
+        catch(ExcecaoTarefaJaAtribuida tja) { }
+        catch(ExcecaoTarefaNaoAtribuida tna) { }
     }
 }

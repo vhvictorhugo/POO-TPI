@@ -11,7 +11,10 @@ import irep.modelo.entidade.Morador;
 import irep.modelo.entidade.Tarefa;
 import irep.modelo.excecao.ExcecaoIDExiste;
 import irep.modelo.excecao.ExcecaoIDNaoExiste;
+import irep.modelo.excecao.ExcecaoNadaParaListar;
 import irep.modelo.excecao.ExcecaoTarefaJaAtribuida;
+import irep.modelo.excecao.ExcecaoTarefaJaConcluida;
+import irep.modelo.excecao.ExcecaoTarefaNaoAtribuida;
 import irep.modelo.persistencia.MoradorDAO;   // mudar para morador
 import irep.modelo.persistencia.TarefaDAO;
 import java.util.ArrayList;
@@ -38,14 +41,17 @@ public class TarefaController {
         }
     }
 
-    public List<String> listarTarefas() {
+    public List<String> listarTarefas() throws ExcecaoNadaParaListar{
         List<String> tarefasStr = new ArrayList<>();
-        List<Tarefa> tarefas = tarefaDAO.listar();
+        List<Tarefa> tarefas = tarefaDAO.listar();       
+
+        if(tarefas.size() == 0){
+            throw new ExcecaoNadaParaListar();
+       }
 
         for (Tarefa t : tarefas) {
             tarefasStr.add(t.toString());
         }
-
         return tarefasStr;
 
     }
@@ -69,11 +75,23 @@ public class TarefaController {
         tarefaDAO.pesquisa(idTarefa).setIdMorador(idMorador);
     }
 
-    public void concluiTarefa(int idTarefa) {
-        for (Tarefa t : tarefaDAO.listar()) {
-            if (t.getIdTarefa() == idTarefa) {
-                t.setIsFeito(true);
-            }
+    public void concluiTarefa(int idTarefa) 
+            throws ExcecaoIDNaoExiste, ExcecaoTarefaJaConcluida,
+            ExcecaoTarefaNaoAtribuida{
+        Tarefa t = tarefaDAO.pesquisa(idTarefa);
+
+        if(t == null){
+            throw new ExcecaoIDNaoExiste();
         }
+
+        if(t.getIsFeito() == "Feita"){
+            throw new ExcecaoTarefaJaConcluida();
+        }
+
+        if(t.getIdMorador() == 0){
+            throw new ExcecaoTarefaNaoAtribuida();
+        }
+
+        t.setIsFeito(true);
     }
 }

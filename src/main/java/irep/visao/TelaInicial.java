@@ -25,7 +25,7 @@ public class TelaInicial {
         int opcao;
         TelaContas telaContas = new TelaContas(contaDAO);
         TelaTarefas telaTarefas = new TelaTarefas(tarefaDAO, moradorDAO);
-        TelaDecisoes telaDecisoes = new TelaDecisoes(decisaoDAO);
+        TelaDecisoes telaDecisoes = new TelaDecisoes(decisaoDAO, moradorDAO);
         TelaMorador telaMorador = new TelaMorador(moradorDAO, tarefaDAO);
         
         opcao = mostrarMenu();

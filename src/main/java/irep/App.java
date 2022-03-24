@@ -21,8 +21,8 @@ public class App
         DecisaoDAO decisaoDAO = new DecisaoDAO();
         TarefaDAO tarefaDAO = new TarefaDAO();
         MoradorDAO moradorDAO = new MoradorDAO();
-        TelaInicial tela = new TelaInicial();
-        
+        TelaInicial tela = new TelaInicial();  
+
         tela.mostrar(contaDAO, decisaoDAO, tarefaDAO, moradorDAO);
     }
 }

@@ -9,7 +9,11 @@ package irep.visao;
 
 import irep.controlador.DecisaoController;
 import irep.modelo.excecao.ExcecaoIDExiste;
+import irep.modelo.excecao.ExcecaoIDNaoExiste;
+import irep.modelo.excecao.ExcecaoNadaParaListar;
+import irep.modelo.excecao.ExcecaoTodosJaVotaram;
 import irep.modelo.persistencia.DecisaoDAO;
+import irep.modelo.persistencia.MoradorDAO;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -20,9 +24,9 @@ public class TelaDecisoes {
     Scanner scan;
     DecisaoController controller;
     
-    public TelaDecisoes(DecisaoDAO decisaoDAO){
+    public TelaDecisoes(DecisaoDAO decisaoDAO, MoradorDAO moradorDAO){
         this.scan = new Scanner(System.in);
-        this.controller = new DecisaoController(decisaoDAO);
+        this.controller = new DecisaoController(decisaoDAO, moradorDAO);
     }
     
     public void mostrar(){
@@ -71,8 +75,8 @@ public class TelaDecisoes {
     private void cadastroDecisao() {
         System.out.println("-------------- CADASTRO DE DECISOES --------------");
         
+        System.out.print("Entre com o ID da decisao: ");
         try{
-            System.out.print("Entre com o ID da decisao: ");
             int idDecisao = scan.nextInt();
 
             System.out.print("Entre com a descricao: ");
@@ -88,17 +92,20 @@ public class TelaDecisoes {
     
     private void listarDecisoes() {
        System.out.println("-------------- LISTAGEM DE DECISOES --------------");
-       List <String> decisoes = controller.listarDecisoes();
-       
-       if(decisoes.size() < 0){
-           System.err.println("Sem decisoes cadastradas!");
-           return;
-       }
-       
-       System.out.println("Total de decisoes: " + decisoes.size());
-       for (String t : decisoes){
-           System.out.println(t);
-       }       
+       try{
+           List <String> decisoes = controller.listarDecisoes();
+        
+            if(decisoes.size() < 0){
+                System.err.println("Sem decisoes cadastradas!");
+                return;
+            }
+            
+            System.out.println("Total de decisoes: " + decisoes.size());
+            for (String t : decisoes){
+                System.out.println(t);
+            }    
+       }catch(ExcecaoNadaParaListar npl){} 
+          
     }
     
     private void votaDecisao() {
@@ -112,11 +119,14 @@ public class TelaDecisoes {
         
         String votoMorador = scan.nextLine().toLowerCase(); 
         
-        if("sim".equals(votoMorador)){
-            controller.efetuaVoto(true, idDecisao);
-        }else if("nao".equals(votoMorador)){
-            controller.efetuaVoto(false, idDecisao);            
-        }       
+        try{
+            if("sim".equals(votoMorador)){
+                controller.efetuaVoto(true, idDecisao);
+            }else if("nao".equals(votoMorador)){
+                controller.efetuaVoto(false, idDecisao);            
+            }
+        }catch(ExcecaoIDNaoExiste ine){ }
+        catch(ExcecaoTodosJaVotaram tjv){ }               
     }   
 
     private void calculaResultado() {
@@ -125,6 +135,8 @@ public class TelaDecisoes {
         System.out.print("Entre com o ID da decisão: ");
         int idDecisao = scan.nextInt();
         
-        controller.calculaResultado(idDecisao);
+        try{
+            controller.calculaResultado(idDecisao);
+        }catch(ExcecaoIDNaoExiste ine){ }        
     }
 }
