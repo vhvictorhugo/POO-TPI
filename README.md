@@ -37,12 +37,12 @@
      - [x] Lista tarefas
        - [ ] Excecao para nao listar se array = vazio
      - [x] Atribui tarefa - cada morador terá uma determinada tarefa em uma determinada semana
-       - [ ] Atribuição real (tarefa-morador)
-         - [ ] Transpor para morador
+       - [x] Atribuição real (tarefa-morador)
+         - [x] Transpor para morador
        - [ ] Acrescentar: somente veteranos atribuem
      - [x] Conclui tarefa
        - [ ] Excecao se idtarefa nao existe
-       - [ ] Excecao se tarefa ja esta concluida
+       - [ ] Excecao se tarefa ja esta concluída
        - [ ] Acrescentar: somente morador da própria tarefa pode efetuar 
   3. Gerenciamento de **Decisões**
   
@@ -55,7 +55,9 @@
      - [x] Votação
        - [ ] Excecao se iddecisao nao existe
        - [ ] Excecao se voto != sim ou != nao
-       - [x] Contabilizar Voto - morador vota sim ou não para a decisão
+       - [ ] Numero de votos totais deve ser menor ou igual a quantidade de moradores atual
+         - [ ] Excecao
+     - [x] Contabilizar Voto - morador vota sim ou não para a decisão
        - [x] Resultado - contagem
          - [ ] Excecao se iddecisao nao existe
   
@@ -70,7 +72,7 @@
      - [x] Listar Moradores
        - [ ] Excecao para nao listar se array = vazio
      - [x] Exibir informações morador
-     - [ ] Listar tarefas por morador
+     - [x] Listar tarefas por morador
        - [ ] Excecao morador nao existe
        - [ ] Excecao nao existem tarefas
   

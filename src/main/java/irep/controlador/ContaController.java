@@ -9,6 +9,8 @@ package irep.controlador;
 
 import irep.modelo.entidade.Conta;
 import irep.modelo.excecao.ExcecaoIDExiste;
+import irep.modelo.excecao.ExcecaoIDNaoExiste;
+import irep.modelo.excecao.ExcecaoNadaParaListar;
 import irep.modelo.excecao.ExcecaoContaPaga;
 import irep.modelo.persistencia.ContaDAO;
 import java.time.LocalDate;
@@ -36,9 +38,13 @@ public class ContaController {
         }
     }
 
-    public List<String> listarContas() {
+    public List<String> listarContas() throws ExcecaoNadaParaListar{
         List<String> contasStr = new ArrayList<>();
         List<Conta> contas = contaDAO.listar();
+
+        if(contas.size() == 0){
+            throw new ExcecaoNadaParaListar();
+       }
 
         for (Conta c : contas) {
             contasStr.add(c.toString());
@@ -48,15 +54,33 @@ public class ContaController {
 
     // criar solucao para verificar se a conta ja esta paga
     // criar solucao para tratar id inexistente
-    public void efetuaPagamentoConta(int idConta) throws ExcecaoContaPaga {
-        for (Conta c : contaDAO.listar()) {
-            if (c.getIdConta() == idConta) {
-                if ("Em Aberto".equals(c.getIsPaga())) {
-                    c.setIsPaga(true);
-                } else {
-                    throw new ExcecaoContaPaga();
-                }
+    public void efetuaPagamentoConta(int idConta) throws ExcecaoContaPaga, ExcecaoIDNaoExiste {
+        Conta conta = contaDAO.pesquisa(idConta);
+
+        if(conta == null){
+            throw new ExcecaoIDNaoExiste();
+        }
+
+        if ("Em Aberto".equals(conta.getIsPaga())) {
+            conta.setIsPaga(true);
+        } else {
+            throw new ExcecaoContaPaga();
+        }
+    }
+
+    public List<String> exibirContasEmAberto() {
+        List<Conta> contas = contaDAO.listar();
+        List<String> contasEmAbertoStr = new ArrayList<>();
+
+        for(Conta c : contas){
+            if(c.getIsPaga().equals("Em Aberto")){
+                contasEmAbertoStr.add(c.toString());
             }
         }
+
+        if((contas.size() == 0) || (contasEmAbertoStr.size() == 0)){
+            throw new ExcecaoNadaParaListar();
+        }
+        return contasEmAbertoStr;
     }
 }

@@ -8,6 +8,8 @@
 package irep.visao;
 import irep.controlador.ContaController;
 import irep.modelo.excecao.ExcecaoIDExiste;
+import irep.modelo.excecao.ExcecaoIDNaoExiste;
+import irep.modelo.excecao.ExcecaoNadaParaListar;
 import irep.modelo.persistencia.ContaDAO;
 import irep.modelo.excecao.ExcecaoContaPaga;
 import java.time.LocalDate;
@@ -87,29 +89,35 @@ public class TelaContas {
     
     private void listarContas() {
         System.out.println("-------------- LISTAGEM DE CONTAS --------------");
-        List<String> contas = controller.listarContas();
-        
-        if(contas.size() < 0){
-           System.err.println("Sem contas cadastradas!");
-           return;
-       }
-        
-        System.out.println("Total de contas: "+ contas.size());
-        for (String c : contas){
-            System.out.println(c);
-        }
+        try{
+            List<String> contas = controller.listarContas();
+            System.out.println("Total de contas: "+ contas.size());
+            for (String c : contas){
+                System.out.println(c);
+            }
+        }catch(ExcecaoNadaParaListar npl){}        
     }
     
     private void pagamentoConta(){
         System.out.println("-------------- PAGAMENTO DE CONTAS --------------");
         
-        System.out.print("Digite o ID da conta a ser paga: ");
-        
-        int idConta;
-        idConta = scan.nextInt();
-        
         try{
-            controller.efetuaPagamentoConta(idConta); 
-        }catch(ExcecaoContaPaga cp){ }    
+            System.out.println("Contas a pagar:");
+
+            for(String s : controller.exibirContasEmAberto()){
+                System.out.println(s);
+            }        
+            
+            System.out.print("Digite o ID da conta a ser paga: ");
+            
+            int idConta;
+            idConta = scan.nextInt();
+            
+            try{
+                controller.efetuaPagamentoConta(idConta); 
+            }catch(ExcecaoContaPaga cp){ }
+            catch(ExcecaoIDNaoExiste ine){ }
+        }catch(ExcecaoNadaParaListar npl){}
+            
     }
 }
