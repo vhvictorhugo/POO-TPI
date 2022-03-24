@@ -27,20 +27,20 @@ public class TelaContas {
         this.scan = new Scanner(System.in);
         this.controller = new ContaController(contaDAO);
     }
-    
-    public void mostrar(){
+
+    public void mostrar() {
         int opcao;
-        
+
         opcao = mostrarMenu();
-        while (opcao != 4){            
-            switch(opcao){
+        while (opcao != 4) {
+            switch (opcao) {
                 case 1:
                     // Cadastrar conta
                     cadastroConta();
                     break;
                 case 2:
                     // listar contas
-                    listarContas();                    
+                    listarContas();
                     break;
                 case 3:
                     // pagar conta
@@ -48,12 +48,12 @@ public class TelaContas {
                     break;
                 default:
                     System.err.println("Opção inválida!");
-            }            
+            }
             opcao = mostrarMenu();
         }
     }
-    
-    private int mostrarMenu(){
+
+    private int mostrarMenu() {
         int opcao;
         System.out.println("-------------- CONTAS --------------");
         System.out.println("1- Cadastrar Contas");
@@ -61,10 +61,10 @@ public class TelaContas {
         System.out.println("3- Pagar Conta");
         System.out.println("4- Sair");
         System.out.print("\nDigite um numero: ");
-        
+
         opcao = scan.nextInt();
-        
-        return opcao;        
+
+        return opcao;
     }
     
     private void cadastroConta(){
@@ -82,8 +82,8 @@ public class TelaContas {
         System.out.print("Entre com a data de vencimento (dd/MM/yyyy): ");
         String vencimentoLeitura = scan.next();
         // converte data do tipo 'String' em data do tipo 'LocalDate'c
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
-        LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato); 
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataVencimento = LocalDate.parse(vencimentoLeitura, formato);
 
         try{
             controller.addConta(idConta, nome, valorConta, dataVencimento);
@@ -92,7 +92,7 @@ public class TelaContas {
             LOGGER.error("Este ID já existe para Conta!");
         }   
     }
-    
+
     private void listarContas() {
         LOGGER.info("INICIADO: Listagem  de contas");
         System.out.println("-------------- LISTAGEM DE CONTAS --------------");
