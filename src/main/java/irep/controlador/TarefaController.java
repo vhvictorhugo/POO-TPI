@@ -7,12 +7,12 @@
 
 package irep.controlador;
 
-import irep.modelo.entidade.Conta;
+import irep.modelo.entidade.Morador;
 import irep.modelo.entidade.Tarefa;
 import irep.modelo.excecao.ExcecaoIDExiste;
 import irep.modelo.excecao.ExcecaoIDNaoExiste;
 import irep.modelo.excecao.ExcecaoTarefaJaAtribuida;
-import irep.modelo.persistencia.ContaDAO;   // mudar para morador
+import irep.modelo.persistencia.MoradorDAO;   // mudar para morador
 import irep.modelo.persistencia.TarefaDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +20,11 @@ import java.util.List;
 public class TarefaController {
 
     TarefaDAO tarefaDAO;
-    ContaDAO contaDAO;
+    MoradorDAO moradorDAO;
 
-    public TarefaController(TarefaDAO tarefaDAO, ContaDAO contaDAO) {
+    public TarefaController(TarefaDAO tarefaDAO, MoradorDAO moradorDAO) {
         this.tarefaDAO = tarefaDAO;
-        this.contaDAO = contaDAO;
+        this.moradorDAO = moradorDAO;
     }
 
     public void addTarefa(int idTarefa, String nome) throws ExcecaoIDExiste{
@@ -53,7 +53,7 @@ public class TarefaController {
     public void efetuaAtribuicaoTarefa(int idTarefa, int idMorador) 
             throws ExcecaoIDNaoExiste, ExcecaoTarefaJaAtribuida{
         Tarefa tarefa = tarefaDAO.pesquisa(idTarefa);
-        Conta morador = contaDAO.pesquisa(idMorador);
+        Morador morador = moradorDAO.pesquisa(idMorador);
 
         // verifica existencia da tarefa
         if(tarefa == null){

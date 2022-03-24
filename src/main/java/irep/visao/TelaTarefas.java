@@ -10,7 +10,7 @@ package irep.visao;
 import irep.controlador.TarefaController;
 import irep.modelo.excecao.ExcecaoIDNaoExiste;
 import irep.modelo.excecao.ExcecaoTarefaJaAtribuida;
-import irep.modelo.persistencia.ContaDAO;
+import irep.modelo.persistencia.MoradorDAO;
 import irep.modelo.persistencia.TarefaDAO;
 
 import java.util.List;
@@ -20,9 +20,9 @@ public class TelaTarefas {
     Scanner scan;
     TarefaController controller;
     
-    public TelaTarefas (TarefaDAO tarefaDAO, ContaDAO contaDAO){
+    public TelaTarefas (TarefaDAO tarefaDAO, MoradorDAO moradorDAO){
         scan = new Scanner(System.in);   
-        controller = new TarefaController(tarefaDAO, contaDAO);
+        controller = new TarefaController(tarefaDAO, moradorDAO);
     }
     
     public void mostrar(){
