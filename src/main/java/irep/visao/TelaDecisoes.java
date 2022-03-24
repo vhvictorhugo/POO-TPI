@@ -14,15 +14,16 @@ import irep.modelo.excecao.ExcecaoNadaParaListar;
 import irep.modelo.excecao.ExcecaoTodosJaVotaram;
 import irep.modelo.persistencia.DecisaoDAO;
 import irep.modelo.persistencia.MoradorDAO;
-
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
 
 public class TelaDecisoes {
     
     Scanner scan;
     DecisaoController controller;
+    private static final Logger LOGGER = Logger.getLogger("irep");
     
     public TelaDecisoes(DecisaoDAO decisaoDAO, MoradorDAO moradorDAO){
         this.scan = new Scanner(System.in);
@@ -73,6 +74,7 @@ public class TelaDecisoes {
     }  
     
     private void cadastroDecisao() {
+        LOGGER.info("INICIADO: Cadastro de decisao");
         System.out.println("-------------- CADASTRO DE DECISOES --------------");
         
         System.out.print("Entre com o ID da decisao: ");
@@ -84,13 +86,17 @@ public class TelaDecisoes {
             String descricao = scan.next();
 
             controller.addDecisao(idDecisao, descricao);
+            LOGGER.debug("CADASTRO: Decisao");
         }catch (InputMismatchException e){
             System.err.println("Insira valores inteiros, por favor!");
             scan.nextLine(); //descarta a entrada errada do usuário
-        }catch (ExcecaoIDExiste de){  }
+        }catch (ExcecaoIDExiste de){
+            LOGGER.error("Este ID já existe para Decisao");
+         }
     }
     
     private void listarDecisoes() {
+        LOGGER.info("INICIADO: Listagem de decisoes");
        System.out.println("-------------- LISTAGEM DE DECISOES --------------");
        try{
            List <String> decisoes = controller.listarDecisoes();
@@ -104,11 +110,15 @@ public class TelaDecisoes {
             for (String t : decisoes){
                 System.out.println(t);
             }    
-       }catch(ExcecaoNadaParaListar npl){} 
+            LOGGER.debug("LISTAR: Morador");
+       }catch(ExcecaoNadaParaListar npl){
+        LOGGER.error("Não há decisoes para listar!");
+       } 
           
     }
     
     private void votaDecisao() {
+        LOGGER.info("INICIADO: Voto de decisoes");
         System.out.println("-------------- VOTO DE DECISOES --------------");
         
         System.out.print("Entre com o ID da decisao: ");
@@ -122,14 +132,19 @@ public class TelaDecisoes {
         try{
             if("sim".equals(votoMorador)){
                 controller.efetuaVoto(true, idDecisao);
+                LOGGER.debug("EFETUA VOTO: Decisao");
             }else if("nao".equals(votoMorador)){
-                controller.efetuaVoto(false, idDecisao);            
+                controller.efetuaVoto(false, idDecisao);   
+                LOGGER.debug("EFETUA VOTO: Decisao");        
             }
-        }catch(ExcecaoIDNaoExiste ine){ }
-        catch(ExcecaoTodosJaVotaram tjv){ }               
+        }catch(ExcecaoIDNaoExiste ine){
+            LOGGER.error("Não há este ID para Decisao!");
+        }
+        catch(ExcecaoTodosJaVotaram tjv){}               
     }   
 
     private void calculaResultado() {
+        LOGGER.info("INICIADO: Calcula resultado da decisao");
         System.out.println("-------------- RESULTADO DE DECISOES --------------");
         
         System.out.print("Entre com o ID da decisão: ");
@@ -137,6 +152,9 @@ public class TelaDecisoes {
         
         try{
             controller.calculaResultado(idDecisao);
-        }catch(ExcecaoIDNaoExiste ine){ }        
+            LOGGER.debug("CALCULA RESULTADO: Decisao");
+        }catch(ExcecaoIDNaoExiste ine){
+            LOGGER.error("Não há este ID para Decisao!");
+        }        
     }
 }

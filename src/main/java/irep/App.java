@@ -7,6 +7,7 @@
 
 package irep;
 
+import org.apache.log4j.Logger;
 import irep.modelo.persistencia.ContaDAO;
 import irep.modelo.persistencia.DecisaoDAO;
 import irep.modelo.persistencia.MoradorDAO;
@@ -15,7 +16,9 @@ import irep.visao.TelaInicial;
 
 public class App 
 {
+    private static final Logger LOGGER = Logger.getLogger("irep");
     public static void main( String[] args ){
+        LOGGER.info("INICIADO: Programa");
         // instanciando banco de dados
         ContaDAO contaDAO = new ContaDAO();
         DecisaoDAO decisaoDAO = new DecisaoDAO();
