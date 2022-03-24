@@ -25,41 +25,37 @@
        - [ ] Excecao para valor ser double e > 0
        - [ ] Excecao para data ser no formato correto
      - [x] Listar contas
-       - [ ] Excecao para nao listar se array = vazio
+       - [x] Excecao para nao listar se array = vazio
      - [x] Efetua o pagamento da conta
-       - [ ] Mostrar contas quando for pagar
-       - [ ] Excecao para ID inexistente
+       - [x] Mostrar contas quando for pagar
+       - [x] Excecao para ID inexistente
        - [ ] Hierarquia: somente veteranos pagam
   2. Gerenciamento de **Tarefas da Casa**
   
      - [x] Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
        - [ ] Excecao para id ser inteiro
      - [x] Lista tarefas
-       - [ ] Excecao para nao listar se array = vazio
+       - [x] Excecao para nao listar se array = vazio
      - [x] Atribui tarefa - cada morador terá uma determinada tarefa em uma determinada semana
        - [x] Atribuição real (tarefa-morador)
          - [x] Transpor para morador
-       - [ ] Acrescentar: somente veteranos atribuem
      - [x] Conclui tarefa
-       - [ ] Excecao se idtarefa nao existe
-       - [ ] Excecao se tarefa ja esta concluída
-       - [ ] Acrescentar: somente morador da própria tarefa pode efetuar 
+       - [x] Excecao se idtarefa nao existe
+       - [x] Excecao se tarefa ja esta concluída
+       - [x] Excecao se tarefa nao atribuida
   3. Gerenciamento de **Decisões**
   
      - [x] Cadastro de Decisões
-       - [ ] Excecao para id ser inteiro
-  
+       - [x] Excecao para id ser inteiro
      - [x] Lista Decisões
-       - [ ] Excecao para nao listar se array = vazio
-  
+       - [x] Excecao para nao listar se array = vazio
      - [x] Votação
-       - [ ] Excecao se iddecisao nao existe
-       - [ ] Excecao se voto != sim ou != nao
-       - [ ] Numero de votos totais deve ser menor ou igual a quantidade de moradores atual
-         - [ ] Excecao
+       - [x] Excecao se iddecisao nao existe
+       - [x] Numero de votos totais deve ser menor ou igual a quantidade de moradores atual
+         - [x] Excecao
      - [x] Contabilizar Voto - morador vota sim ou não para a decisão
        - [x] Resultado - contagem
-         - [ ] Excecao se iddecisao nao existe
+         - [x] Excecao se iddecisao nao existe
   
   
      * Ex: Comprar um Freezer - compra **para a casa** com **alto custo**, que necessita de aprovação da **maioria** dos moradores
@@ -68,14 +64,12 @@
   
      - [x] Cadastrar Morador
        - [ ] Hierarquia - calouro e veterano (Herança)
-       - [ ] Colocar enum para curso
      - [x] Listar Moradores
-       - [ ] Excecao para nao listar se array = vazio
+       - [x] Excecao para nao listar se array = vazio
      - [x] Exibir informações morador
      - [x] Listar tarefas por morador
-       - [ ] Excecao morador nao existe
-       - [ ] Excecao nao existem tarefas
-  
+       - [x] Excecao morador nao existe
+       - [x] Excecao nao existem tarefas
   5. **Possíveis Futuras Implementações**
   
      - Emitir Notificações
@@ -114,24 +108,8 @@ O repositório conta com 2 branches (main e dev), favor verificar os commits de 
 
 
 
-###### Feedback ENTREGA 2 (tarefas ainda em aberto):
-
-• Implementar alguns testes enquanto ainda está no começo, para não dificultar mais no final;
-
-• Deixando o curso como String, pode acontecer de diferentes cadastros ficarem com diferentes nomes. Sugiro utilizar um ENUM para o curso.
-
-
-
 ###### Próximos Passos:
 
 • <font color='red'>Implementar Testes Unitários</font>;
 
-• Terminar de converter o projeto para o padrão MVC - falta somente a classe Morador;
-
-• Verificar erros de projeto - tratamento de exceções
-
-• verificar autenticações
-
-​		• quais usuários podem mudar o estado
-
-• Terminar de implementar funcionalidades listadas anteriormente.
+• Criar herança calouro e veterano

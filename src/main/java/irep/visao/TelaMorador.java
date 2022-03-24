@@ -14,6 +14,9 @@ import java.util.Scanner;
 
 import irep.controlador.MoradorController;
 import irep.modelo.excecao.ExcecaoIDExiste;
+import irep.modelo.excecao.ExcecaoIDNaoExiste;
+import irep.modelo.excecao.ExcecaoMoradorNaoPossuiTarefas;
+import irep.modelo.excecao.ExcecaoNadaParaListar;
 import irep.modelo.persistencia.MoradorDAO;
 import irep.modelo.persistencia.TarefaDAO;
 
@@ -98,17 +101,21 @@ public class TelaMorador {
     
     private void listarMoradores() {
        System.out.println("-------------- LISTAGEM DE MORADORES --------------");
-       List <String> moradores = controller.listarMoradores();
        
-       if(moradores.size() < 0){
-           System.err.println("Sem moradores cadastrados!");
-           return;
-       }
-       
-       System.out.println("Total de moradores: " + moradores.size());
-       for (String m : moradores){
-           System.out.println(m);
-       }       
+        try{
+            List <String> moradores = controller.listarMoradores();
+        
+            if(moradores.size() < 0){
+                System.err.println("Sem moradores cadastrados!");
+                return;
+            }
+            
+            System.out.println("Total de moradores: " + moradores.size());
+            for (String m : moradores){
+                System.out.println(m);
+            }
+        }catch(ExcecaoNadaParaListar npl) { }
+             
     }
 
     private void exibirPorID(){
@@ -118,29 +125,29 @@ public class TelaMorador {
         
         int idMorador;
         idMorador = scan.nextInt();
-
-        System.out.println(controller.exibirMoradorPorID(idMorador));
+        try{
+            System.out.println(controller.exibirMoradorPorID(idMorador));
+        }catch(ExcecaoIDNaoExiste ine){ }
     }
 
     private void exibirTarefasAtribuidas() {
         System.out.println("-------------- TAREFAS ATRIBUÍDAS --------------");
+        
         List <String> tarefas;
-
+        
         System.out.print("Digite o ID do morador: ");
         
-        int idMorador;
-        idMorador = scan.nextInt();
-
-        tarefas = controller.listarTarefasAtribuidas(idMorador);
+        int idMorador = scan.nextInt();
         
-        if(tarefas.size() < 0){
-            System.err.println("Sem tarefas atribuidas!");
-            return;
-        }
-        
-        System.out.println("Total de tarefas atribuidas: " + tarefas.size());
-        for (String t : tarefas){
-            System.out.println(t);
-        }
+        try{
+            tarefas = controller.listarTarefasAtribuidas(idMorador);
+            
+            System.out.println("Total de tarefas: " + tarefas.size());
+            for (String t : tarefas){
+                System.out.println(t);
+            }
+        }catch(ExcecaoNadaParaListar npl) { }
+        catch(ExcecaoIDNaoExiste ine) { }
+        catch(ExcecaoMoradorNaoPossuiTarefas mnpt) { }
     }
 }

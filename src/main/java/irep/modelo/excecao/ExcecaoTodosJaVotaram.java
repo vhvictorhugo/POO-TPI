@@ -7,10 +7,8 @@
 
 package irep.modelo.excecao;
 
-import java.util.InputMismatchException;
-
-public class ExcecaoEntradaIncorreta extends InputMismatchException{
-    public ExcecaoEntradaIncorreta(){
-        System.err.println("Entrada com formato inválido!");
+public class ExcecaoTodosJaVotaram extends RuntimeException{
+    public ExcecaoTodosJaVotaram(){
+        System.err.println("Todos já votaram! Impossível votar nessa decisão!");
     }
 }

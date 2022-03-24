@@ -90,7 +90,7 @@ public class TelaContas {
     private void listarContas() {
         System.out.println("-------------- LISTAGEM DE CONTAS --------------");
         try{
-            List<String> contas = controller.listarContas();
+        List<String> contas = controller.listarContas();
             System.out.println("Total de contas: "+ contas.size());
             for (String c : contas){
                 System.out.println(c);
@@ -101,9 +101,9 @@ public class TelaContas {
     private void pagamentoConta(){
         System.out.println("-------------- PAGAMENTO DE CONTAS --------------");
         
+        System.out.println("Contas a pagar:");
+        
         try{
-            System.out.println("Contas a pagar:");
-
             for(String s : controller.exibirContasEmAberto()){
                 System.out.println(s);
             }        
