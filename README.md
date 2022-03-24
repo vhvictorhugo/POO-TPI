@@ -27,7 +27,7 @@
      - [x] Listar contas
        - [ ] Excecao para nao listar se array = vazio
      - [x] Efetua o pagamento da conta
-       - [ ] lancar excecao para ID inexistente
+       - [ ] Excecao para ID inexistente
        - [ ] Hierarquia: somente veteranos pagam
   
   2. Gerenciamento de **Tarefas da Casa**
@@ -65,14 +65,14 @@
   
   4. **Moradores**
   
-     - [ ] Cadastrar Morador
+     - [x] Cadastrar Morador
        - [ ] Hierarquia - calouro e veterano (Herança)
        - [ ] Colocar enum para curso
        
-     - [ ] Listar Moradores
+     - [x] Listar Moradores
        - [ ] Excecao para nao listar se array = vazio
   
-     - [ ] Exibir informações morador
+     - [x] Exibir informações morador
   
   5. **Possíveis Futuras Implementações**
   

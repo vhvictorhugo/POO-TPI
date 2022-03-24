@@ -27,7 +27,7 @@ public class TarefaController {
         this.contaDAO = contaDAO;
     }
 
-    public Tarefa addTarefa(int idTarefa, String nome) throws ExcecaoIDExiste{
+    public void addTarefa(int idTarefa, String nome) throws ExcecaoIDExiste{
         Tarefa t = new Tarefa(idTarefa, nome);
 
         Tarefa tVerificaExistente = tarefaDAO.pesquisa(idTarefa);
@@ -35,7 +35,6 @@ public class TarefaController {
             throw new ExcecaoIDExiste();
         } else {
             tarefaDAO.add(t);
-            return t;
         }
     }
 

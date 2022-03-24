@@ -11,13 +11,14 @@ import java.time.LocalDate;
 
 // nao podera existir morador com id == 0
 public class Morador {
-    
+    private int idMorador;
     private String nome, apelido, curso;
     private LocalDate dataNascimento, dataEntrada;
     private int idade;
     //private Tarefa tarefaAtribuida;
     
     // Getters 
+    public int getIdMorador(){ return this.idMorador; }
     public String getNome(){ return this.nome; }
     public String getApelido(){ return this.apelido; }
     public String getCurso(){ return this.curso; }
@@ -35,9 +36,9 @@ public class Morador {
         this.idade = dataAtual.getYear() - dataNascimento.getYear();
     }
     
-    public Morador(String nome, String apelido, String curso, LocalDate dataNascimento){
+    public Morador(int idMorador, String nome, String apelido, String curso, LocalDate dataNascimento){
         LocalDate dataAtual;
-        
+        this.idMorador = idMorador;
         this.setNome(nome);
         this.setApelido(apelido);
         this.setCurso(curso);
@@ -50,10 +51,12 @@ public class Morador {
     
     @Override
     public String toString(){
-        return ("Nome: " + this.getNome() + "\n" +
+        return ("ID: " + this.getIdMorador() + "\n" +
+                "Nome: " + this.getNome() + "\n" +
+                "Data de Nascimento: "+ this.getDataNascimento() + "\n" +
                 "Apelido: " + this.getApelido() + "\n" +
                 "Curso: " + this.getCurso() + "\n" +
                 "Idade: " + this.getIdade() + "\n" +
-                "Data entrada: " + this.getDataEntrada() + "\n");
+                "Data de entrada: " + this.getDataEntrada() + "\n");
     }
 }

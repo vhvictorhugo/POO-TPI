@@ -71,13 +71,14 @@ public class TelaMorador {
         
         System.out.print("Entre com o nome: ");
         String nome = scan.next();
-
+        
         System.out.print("Entre com o apelido: ");
         String apelido = scan.next();
         
         System.out.print("Entre com o curso: ");
-        String curso = scan.next();
+        String curso = scan.nextLine();
 
+        scan.nextLine();
         System.out.print("Entre com a data de nascimento (dd/MM/yyyy): ");
         String nascimentoLeitura = scan.next();
         // converte data do tipo 'String' em data do tipo 'LocalDate'c

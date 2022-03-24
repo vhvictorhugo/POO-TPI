@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class TarefaDAO implements GenericDAO<Tarefa>{
-    private List <Tarefa> tarefas = new ArrayList<>();
+    private List <Tarefa> tarefas;
     
     public TarefaDAO (){
         this.tarefas = new ArrayList<>();

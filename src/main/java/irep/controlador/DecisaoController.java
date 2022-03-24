@@ -21,7 +21,7 @@ public class DecisaoController {
         this.decisaoDAO = decisaoDAO;
     }
      
-    public Decisao addDecisao(int idDecisao, String descricao) throws ExcecaoIDExiste{
+    public void addDecisao(int idDecisao, String descricao) throws ExcecaoIDExiste{
         Decisao d = new Decisao(idDecisao, descricao);
         
         Decisao dVerificaExistente = decisaoDAO.pesquisa(idDecisao);
@@ -29,7 +29,6 @@ public class DecisaoController {
             throw new ExcecaoIDExiste();
         }else{
             decisaoDAO.add(d);
-            return d;
         }           
     }
 

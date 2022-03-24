@@ -8,25 +8,44 @@
 package irep.controlador;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import irep.modelo.entidade.Morador;
+import irep.modelo.excecao.ExcecaoIDExiste;
 import irep.modelo.persistencia.MoradorDAO;
 
 public class MoradorController {
+    MoradorDAO moradorDAO;
 
     public MoradorController(MoradorDAO moradorDAO) {
+        this.moradorDAO = moradorDAO;
     }
 
     public void addMorador(int idMorador, String nome, String apelido, String curso, LocalDate dataNascimento) {
-    
+        Morador m = new Morador(idMorador, nome, apelido, curso, dataNascimento);
+
+        Morador mVerificaExistente = moradorDAO.pesquisa(idMorador);
+        if (mVerificaExistente != null) {
+            throw new ExcecaoIDExiste();
+        }else{
+            moradorDAO.add(m);
+        }
     }
 
     public List<String> listarMoradores() {
-        return null;
+        List<String> moradoresStr = new ArrayList<>();
+        List<Morador> moradores = moradorDAO.listar();
+
+        for (Morador t : moradores) {
+            moradoresStr.add(t.toString());
+        }
+        return moradoresStr;
     }
 
-    public char[] exibirMoradorPorID(int idMorador) {
-        return null;
+    public String exibirMoradorPorID(int idMorador) {
+        Morador morador = moradorDAO.pesquisa(idMorador);
+        return (morador.toString());
     }
     
 }

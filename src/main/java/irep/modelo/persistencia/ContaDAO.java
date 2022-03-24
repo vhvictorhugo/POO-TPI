@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class ContaDAO implements GenericDAO<Conta>{
-    private List <Conta> contas = new ArrayList<>();
+    private List <Conta> contas;
     
     public ContaDAO (){
         

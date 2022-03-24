@@ -7,34 +7,51 @@
 
 package irep.modelo.persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import irep.modelo.entidade.Morador;
 
 public class MoradorDAO implements GenericDAO<Morador>{
+    private List <Morador> moradores;
+
+    public MoradorDAO(){
+        this.moradores = new ArrayList<>(); 
+    }
 
     @Override
     public Morador add(Morador m) {
-        // TODO Auto-generated method stub
-        return null;
+        moradores.add(m);
+        return m;
     }
 
     @Override
     public Morador pesquisa(int ID) {
-        // TODO Auto-generated method stub
+        for (Morador m : moradores){
+            if(m.getIdMorador() == ID){
+                return m;
+            }
+        }        
         return null;
     }
 
     @Override
     public Morador remove(int ID) {
-        // TODO Auto-generated method stub
+        Morador mor = pesquisa(ID);
+        if(mor != null){    // se a decisao existe
+            for (Morador m : moradores){ // recupera o index da decisao na lista de decisaos
+                if(m.getIdMorador() == ID){
+                    moradores.remove(m);
+                    return m;
+                }
+            }
+        }
         return null;
     }
 
     @Override
     public List<Morador> listar() {
-        // TODO Auto-generated method stub
-        return null;
+        return moradores;
     }
     
 }

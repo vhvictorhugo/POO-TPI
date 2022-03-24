@@ -23,7 +23,7 @@ public class ContaController {
         this.contaDAO = contaDAO;
     }
     
-    public Conta addConta(int idConta, String nome, double valorConta, LocalDate vencimento) throws ExcecaoIDExiste{
+    public void addConta(int idConta, String nome, double valorConta, LocalDate vencimento) throws ExcecaoIDExiste{
 
         Conta c = new Conta(idConta, nome, valorConta, vencimento);
       
@@ -33,7 +33,6 @@ public class ContaController {
             throw new ExcecaoIDExiste();
         }else{        
           contaDAO.add(c);
-            return c;
         }
     }
 

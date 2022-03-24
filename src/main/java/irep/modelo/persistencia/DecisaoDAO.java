@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DecisaoDAO implements GenericDAO<Decisao> {
     
-    private List <Decisao> decisoes  = new ArrayList<>();
+    private List <Decisao> decisoes;
     
     public DecisaoDAO(){
         decisoes = new ArrayList<>();
