@@ -10,7 +10,6 @@ import irep.controlador.MoradorController;
 import irep.controlador.TarefaController;
 import irep.modelo.entidade.Conta;
 import irep.modelo.entidade.Decisao;
-import irep.modelo.entidade.Morador;
 import irep.modelo.entidade.Tarefa;
 import irep.modelo.excecao.ExcecaoContaPaga;
 import irep.modelo.excecao.ExcecaoIDNaoExiste;
@@ -149,9 +148,9 @@ public class AppTest {
         try {
             initBeforeAll();
             tarefaController.concluiTarefa(1);
-            Tarefa tarefa = tarefaDAO.pesquis a(1);
+            Tarefa tarefa = tarefaDAO.pesquisa(1);
             assertEquals(tarefa.getIsFeito(),"Feita");
-        } atch (ExcecaoIDNaoExiste ine) {
+        } catch (ExcecaoIDNaoExiste ine) {
         } catch (ExcecaoTarefaJaConcluida tjc) {
         }  catch (ExcecaoTarefaNaoAtribuida tna) {
         }
@@ -160,7 +159,7 @@ public class AppTest {
     public void testListarTarefa() {
         try {
             initBeforeAll();
-            List<String> lista = tarefaController.listarTarefa();
+            List<String> lista = tarefaController.listarTarefas();
             assert (lista.size() == 2);
         } catch (ExcecaoNadaParaListar npl) {
         }
@@ -169,32 +168,34 @@ public class AppTest {
     public void testListarMorador() {
         try {
             initBeforeAll();
-            List<String> lista = moradorController.listarMorador();
+            List<String> lista = moradorController.listarMoradores();
             assert (lista.size() == 2);
         } catch (ExcecaoNadaParaListar npl) {
         }
     }
-    @
-
+    @Test
     public void testListarTarefasAtribuidas() {
         try {
-            i
-
-            
-        catch (ExcecaoIDNaoExiste inexistente) {
-        }catch (ExcecaoNadaParaListar npl) {
-        }catch (ExcecaoMoradorNaoPossuiTarefas mnpt) {
-     } @Test
-
-    
-    public void testExibirMoradorPorID() {
-        try {
             initBeforeAll();
-            Morador lista = moradorController.exibirMoradorPorID();
+            List<String> lista = moradorController.listarTarefasAtribuidas(1);
             assert (lista.size() == 1);
         } 
         catch (ExcecaoIDNaoExiste inexistente) {
         }catch (ExcecaoNadaParaListar npl) {
         }catch (ExcecaoMoradorNaoPossuiTarefas mnpt) {
         }
- 
+    }
+    @Test
+    public void testExibirMoradorPorID() {
+        try {
+            initBeforeAll();
+            String morador = moradorController.exibirMoradorPorID(3);
+        } 
+        catch (ExcecaoIDNaoExiste inexistente) {
+            assert (true);
+        }catch (ExcecaoNadaParaListar npl) {
+        }catch (ExcecaoMoradorNaoPossuiTarefas mnpt) {
+        }
+    }
+
+}
