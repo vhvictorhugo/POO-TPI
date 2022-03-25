@@ -21,19 +21,15 @@
   1. Gerenciamento de **Contas**
   
      - [x] Cadastro de Contas (luz, água, internet, etc)
-       - [ ] Excecao id inteiro
-       - [ ] Excecao para valor ser double e > 0
-       - [ ] Excecao para data ser no formato correto
      - [x] Listar contas
        - [x] Excecao para nao listar se array = vazio
      - [x] Efetua o pagamento da conta
        - [x] Mostrar contas quando for pagar
        - [x] Excecao para ID inexistente
-       - [ ] Hierarquia: somente veteranos pagam
   2. Gerenciamento de **Tarefas da Casa**
   
      - [x] Cadastro de Tarefas da Casa (colocar o lixo na rua, limpeza geral, cozinha, etc)
-       - [ ] Excecao para id ser inteiro
+       - [x] Excecao para id ser inteiro
      - [x] Lista tarefas
        - [x] Excecao para nao listar se array = vazio
      - [x] Atribui tarefa - cada morador terá uma determinada tarefa em uma determinada semana
@@ -63,7 +59,6 @@
   4. **Moradores**
   
      - [x] Cadastrar Morador
-       - [ ] Hierarquia - calouro e veterano (Herança)
      - [x] Listar Moradores
        - [x] Excecao para nao listar se array = vazio
      - [x] Exibir informações morador
@@ -99,17 +94,3 @@
   aumentando a coesão;
 * Amadurecer a experiência de se trabalhar em equipe;
 * Aprender a usar de forma apropriada uma ferramenta de controle de versão.
-
-
-
-###### Detalhes sobre ENTREGA 2:
-
-O repositório conta com 2 branches (main e dev), favor verificar os commits de ambas. Sempre que possível a dupla fará o merge entre elas. Vale lembrar que a branch 'main' contém a versão mais estável do código.
-
-
-
-###### Próximos Passos:
-
-• <font color='red'>Implementar Testes Unitários</font>;
-
-• Criar herança calouro e veterano
